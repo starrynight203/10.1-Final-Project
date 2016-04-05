@@ -5896,4 +5896,10 @@ footer li {
   display: inline-block;
   text-align: center; }
 
+.sign-in {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-left: 25%;
+  width: 550px; }
+
 /*# sourceMappingURL=app.css.map */

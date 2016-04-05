@@ -6,7 +6,7 @@ var Jewelry = Backbone.Model.extend({
 
 var JewelryCollection = Backbone.Collection.extend({
   model: Jewelry,
-  url: 'http://tiny-ring-server.herokuapp.com//collections/themiddlefinger',
+  url: 'http://tiny-ring-server.herokuapp.com/',
   parse: function(data){
     return data;
   }
