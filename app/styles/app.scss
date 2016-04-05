@@ -15,3 +15,56 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 img {
   max-width: 100%;
 }
+
+body {
+  font-family: 'Karla', sans-serif;
+}
+
+.container-fluid {
+  background: url('https://images.unsplash.com/photo-1438762539682-535757d151ad?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=eb7049f9c6ac4a0a866d775b632cc9fd') center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  height: 450px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.main-nav {
+  display: inline-block;
+  margin: 35px;
+  li {
+    display: inline-block;
+    margin: 5px;
+  }
+}
+
+.title {
+  display: inline-block;
+  margin-left: 285px;
+  font-size: 25px;
+}
+
+.login-nav {
+  float: right;
+  margin: 35px;
+  li {
+    list-style: none;
+    display: inline-block;
+    margin: 5px;
+  }
+}
+
+.s-button {
+  margin-top: 250px;
+}
+
+.shop-button {
+  border: 2px solid #fff;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 13px 30px;
+  // width: 49.99%;
+  margin-left: 550px;
+  text-decoration: none;
+  color: #fff;
+}
