@@ -22,6 +22,7 @@ body {
 
 .container-fluid {
   background: url('https://images.unsplash.com/photo-1438762539682-535757d151ad?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=eb7049f9c6ac4a0a866d775b632cc9fd') center center;
+  // background: url('https://images.unsplash.com/photo-1450297085576-21d98821f1fb?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=f32a6df98803b0d3d0dc076804a98a4c') center center;
   -webkit-background-size: cover;
   background-size: cover;
   height: 450px;
@@ -41,12 +42,13 @@ body {
 .title {
   display: inline-block;
   margin-left: 285px;
-  font-size: 25px;
+  font-size: 35px;
 }
 
 .login-nav {
   float: right;
   margin: 35px;
+  margin-right: 50px;
   li {
     list-style: none;
     display: inline-block;
@@ -55,7 +57,7 @@ body {
 }
 
 .s-button {
-  margin-top: 250px;
+  margin-top: 270px;
 }
 
 .shop-button {
@@ -64,7 +66,7 @@ body {
   background-color: transparent;
   padding: 13px 30px;
   // width: 49.99%;
-  margin-left: 550px;
+  margin-left: 562px;
   text-decoration: none;
   color: #fff;
 }

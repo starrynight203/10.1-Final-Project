@@ -5838,25 +5838,26 @@ body {
 .title {
   display: inline-block;
   margin-left: 285px;
-  font-size: 25px; }
+  font-size: 35px; }
 
 .login-nav {
   float: right;
-  margin: 35px; }
+  margin: 35px;
+  margin-right: 50px; }
   .login-nav li {
     list-style: none;
     display: inline-block;
     margin: 5px; }
 
 .s-button {
-  margin-top: 250px; }
+  margin-top: 270px; }
 
 .shop-button {
   border: 2px solid #fff;
   border-radius: 5px;
   background-color: transparent;
   padding: 13px 30px;
-  margin-left: 550px;
+  margin-left: 562px;
   text-decoration: none;
   color: #fff; }
 
