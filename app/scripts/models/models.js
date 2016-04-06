@@ -1,5 +1,6 @@
 var Backbone = require('backbone');
 
+
 var Jewelry = Backbone.Model.extend({
  idAttribute: 'cid'
 });

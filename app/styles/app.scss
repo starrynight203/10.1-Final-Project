@@ -21,6 +21,9 @@ body {
   ul {
     list-style: none;
   }
+  a {
+    text-decoration: none;
+  }
 }
 
 .container-fluid {
@@ -114,26 +117,130 @@ body {
   margin-bottom: 20px;
 }
 
+/////// Footer /////////
+
 footer {
+  background-color: #ffeeee;
+  a {
+    text-decoration: none;
+    font-size: 13px;
+    color: black;
+  }
   li {
-    display: inline-block;
-    font-size: 18px;
+    list-style: none;
   }
 }
 
-.info-footer {
-  // border-right: 1px solid black; work on adding this later
-}
-
-.footer-links {
-  display: inline-block;
-  text-align: center;
-}
-
 ////////// Sign in page ////////
-.sign-in {
+.background {
+  background: url('https://images.unsplash.com/photo-1446071103084-c257b5f70672?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=21cf7e2e461fa5c32c6bc99ecd38c754') center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.logout-button {
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  float: right;
+  margin: 10px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.login-forms {
+  margin-left: 15%;
+  padding-top: 200px;
+  height: 550px;
+}
+
+.form-control {
+  margin-bottom: 5px;
+}
+
+.signup {
+  display: inline-block;
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin: 5px;
+  // margin-left: 25%;
+  width: 450px;
+}
+
+.signin {
+  display: inline-block;
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin: 5px;
+  // margin-left: 25%;
+  width: 450px;
+  // float: right;
+}
+
+//////// Admin Screen page //////
+.welcome-title {
+  margin-bottom: 25px;
+  font-size: 30px;
+}
+
+.products-button {
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.orders-button {
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+/////// Create Product Page //////
+.createproductspage {
+  h3 {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    font-size: 30px;
+  }
+}
+
+.add-button {
+  padding: 10px 15px 10px 15px;
   border: 1px solid black;
   border-radius: 5px;
-  margin-left: 25%;
-  width: 550px;
+  float: right;
+  margin: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.product-forms {
+  margin: 0;
+}
+
+//////// Add Product Page ////////
+.addproductpage{
+  margin-bottom: 60px;
+  h3 {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    font-size: 30px;
+  }
+  .row {
+    margin: 0;
+  }
+}
+
+.row {
+
 }

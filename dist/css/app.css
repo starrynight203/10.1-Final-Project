@@ -5821,6 +5821,8 @@ body {
   font-family: 'Karla', sans-serif; }
   body ul {
     list-style: none; }
+  body a {
+    text-decoration: none; }
 
 .container-fluid {
   background: url("https://images.unsplash.com/photo-1450297166380-cabe503887e5?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=c62232978a807ac821c158c9a15b8b79") center center;
@@ -5888,18 +5890,99 @@ body {
 .instagram-images2 {
   margin-bottom: 20px; }
 
-footer li {
-  display: inline-block;
-  font-size: 18px; }
+footer {
+  background-color: #ffeeee; }
+  footer a {
+    text-decoration: none;
+    font-size: 13px;
+    color: black; }
+  footer li {
+    list-style: none; }
 
-.footer-links {
-  display: inline-block;
-  text-align: center; }
+.background {
+  background: url("https://images.unsplash.com/photo-1446071103084-c257b5f70672?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=21cf7e2e461fa5c32c6bc99ecd38c754") center center;
+  -webkit-background-size: cover;
+  background-size: cover; }
 
-.sign-in {
+.logout-button {
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  float: right;
+  margin: 10px;
+  text-decoration: none;
+  color: #fff; }
+
+.login-forms {
+  margin-left: 15%;
+  padding-top: 200px;
+  height: 550px; }
+
+.form-control {
+  margin-bottom: 5px; }
+
+.signup {
+  display: inline-block;
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin: 5px;
+  width: 450px; }
+
+.signin {
+  display: inline-block;
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin: 5px;
+  width: 450px; }
+
+.welcome-title {
+  margin-bottom: 25px;
+  font-size: 30px; }
+
+.products-button {
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin: 5px; }
+
+.orders-button {
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin: 5px; }
+
+.createproductspage h3 {
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  font-size: 30px; }
+
+.add-button {
+  padding: 10px 15px 10px 15px;
   border: 1px solid black;
   border-radius: 5px;
-  margin-left: 25%;
-  width: 550px; }
+  float: right;
+  margin: 10px;
+  text-decoration: none;
+  color: black; }
+
+.product-forms {
+  margin: 0; }
+
+.addproductpage {
+  margin-bottom: 60px; }
+  .addproductpage h3 {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    font-size: 30px; }
+  .addproductpage .row {
+    margin: 0; }
 
 /*# sourceMappingURL=app.css.map */

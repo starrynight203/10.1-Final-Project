@@ -7,31 +7,68 @@ require('backbone-react-component');
 var models = require('./../models/models');
 var jewelryCollection = new models.JewelryCollection();
 
+var HeaderComponent = require('./../components/header.jsx');
 var SignupPage = require('./../components/admin-login.jsx');
-var HeaderComponent = require('./../components/index.jsx');
+var AdminScreenComponent = require('./../components/adminscreen.jsx');
+var CreateProductsComponent = require('./../components/createproducts.jsx');
+var AddProductComponent = require('./../components/addproductpage.jsx');
+var GalleryComponent = require('./../components/gallery.jsx');
 
+var appContainer = document.getElementById('app');
 var Router = Backbone.Router.extend({
   routes:{
-    '':'index',
+    'index':'index',
     'adminlogin':'adminloginpage',
-    'adminscreen':'adminscreen'
+    'adminroute':'adminroutescreen',
+    'createproduct':'createproductscreen',
+    'addproduct':'addproductscreen',
+    'gallery':'galleryscreen'
   },
   index: function(){
+    ReactDOM.unmountComponentAtNode(appContainer);
+
     ReactDOM.render(
       React.createElement(HeaderComponent),
-      document.getElementById('app')
+      appContainer
     );
   },
   adminloginpage: function(){
+    ReactDOM.unmountComponentAtNode(appContainer);
+
     ReactDOM.render(
       React.createElement(SignupPage),
-      document.getElementById('app')
+      appContainer
     );
   },
-  adminscreen: function(){
+  adminroutescreen: function(){
+    ReactDOM.unmountComponentAtNode(appContainer);
+
     ReactDOM.render(
       React.createElement(AdminScreenComponent),
-      document.getElementById('app')
+      appContainer
+    );
+  },
+  createproductscreen: function(){
+    ReactDOM.unmountComponentAtNode(appContainer);
+
+    ReactDOM.render(
+      React.createElement(CreateProductsComponent),
+      appContainer
+    );
+  },
+  addproductscreen: function(){
+    ReactDOM.unmountComponentAtNode(appContainer);
+    ReactDOM.render(
+      React.createElement(AddProductComponent),
+      appContainer
+    );
+  },
+  galleryscreen: function(){
+    ReactDOM.unmountComponentAtNode(appContainer);
+
+    ReactDOM.render(
+      React.createElement(GalleryComponent),
+      appContainer
     );
   }
 });

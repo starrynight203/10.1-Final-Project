@@ -18,8 +18,7 @@ var HeaderComponent = React.createClass({
             <h2 className="title">Name</h2>
 
             <ul className="login-nav">
-              <li>Sign Up</li>
-              <li><a href="#adminlogin">Log In</a></li>
+              
               <li>Cart</li>
             </ul>
           </div>
