@@ -241,6 +241,61 @@ footer {
   }
 }
 
-.row {
+/////// Gallery Page ///////
+.side-nav {
+  li {
+    margin-top: 2px;
+    margin-bottom: 5px;
+  }
+}
 
+.list-names {
+  li {
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
+
+.pic1-row1 {
+  border: 1px solid black;
+  height: 250px;
+  border-radius: 5px;
+}
+
+.pic2-row1 {
+  border: 1px solid black;
+  height: 250px;
+  border-radius: 5px;
+}
+
+.pic3-row1 {
+  border: 1px solid black;
+  height: 250px;
+  border-radius: 5px;
+}
+
+/////// Detail Page ////////
+.detail-img {
+  height: 350px;
+  width: 400px;
+  margin-left: 100px;
+  border-radius: 5px;
+}
+.ring-name {
+  font-size: 43px;
+}
+
+.price {
+  font-size: 28px;
+  color: #555;
+}
+
+.quantity-input {
+  width: 68px;
+}
+
+.size-input {
+  width: 42px;
 }

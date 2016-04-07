@@ -18,14 +18,14 @@ var HeaderComponent = React.createClass({
             <h2 className="title">Name</h2>
 
             <ul className="login-nav">
-              
+
               <li>Cart</li>
             </ul>
           </div>
         </div>
 
         <div className="s-button">
-          <a href="#" className="shop-button">Shop Now</a>
+          <a href="#gallery" className="shop-button">Shop Now</a>
         </div>
 
       </div>

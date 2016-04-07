@@ -1,12 +1,16 @@
+var Parse = require('parse');
 var Backbone = require('backbone');
 
 
-var Jewelry = Backbone.Model.extend({
- idAttribute: 'cid'
-});
+// var Jewelry = Backbone.Model.extend({
+//  idAttribute: 'cid'
+// });
+//
 
-var JewelryCollection = Backbone.Collection.extend({
-  model: Jewelry,
+var Product = Parse.Object.extend("Product");
+
+var ProductCollection = Backbone.Collection.extend({
+  model: Product,
   url: 'http://tiny-ring-server.herokuapp.com/',
   parse: function(data){
     return data;
@@ -14,6 +18,6 @@ var JewelryCollection = Backbone.Collection.extend({
 });
 
 module.exports = {
-  "Jewelry": Jewelry,
-  "JewelryCollection": JewelryCollection
+  "Product": Product,
+  "ProductCollection": ProductCollection
 }
