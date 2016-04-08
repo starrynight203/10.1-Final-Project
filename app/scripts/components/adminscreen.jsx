@@ -9,8 +9,8 @@ var AdminScreenComponent = React.createClass({
       <div className="adminpage">
         <h3 className="welcome-title">Welcome!</h3>
 
-        <div className="row adminscreen">
-          <div className="col-xs-6">
+        <div className="row ">
+          <div className="col-xs-6 adminscreen">
             <a href="#createproduct"  className="products-button">Products</a>
           </div>
           <div className="col-xs-6">
