@@ -165,7 +165,7 @@ var AdminScreenComponent = React.createClass({displayName: "AdminScreenComponent
       React.createElement("div", {className: "adminpage"}, 
         React.createElement("h3", {className: "welcome-title"}, "Welcome!"), 
 
-        React.createElement("div", {className: "row"}, 
+        React.createElement("div", {className: "row adminscreen"}, 
           React.createElement("div", {className: "col-xs-6"}, 
             React.createElement("a", {href: "#createproduct", className: "products-button"}, "Products")
           ), 

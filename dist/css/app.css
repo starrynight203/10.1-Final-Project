@@ -5941,6 +5941,9 @@ footer {
   margin-bottom: 25px;
   font-size: 30px; }
 
+.adminscreen {
+  height: 150px; }
+
 .products-button {
   padding: 15px;
   border: 2px solid #ccc;
