@@ -14,6 +14,7 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
     return {name: '', description: '', price: ''};
   },
 
+
   handleSubmit: function(e){
     e.preventDefault();
     console.log('submit working');
@@ -33,11 +34,28 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
           }
     });
 
+    var image = new model.Images();
+    image.set({
+      'title': "test",
+      'file': '2',
+      'product': "10"
+    });
+
+    image.save(null, {
+      success: function(image) {
+        alert('New image created');
+      },
+      error: function(error) {
+            console.log(error);
+          }
+    });
+
 
     // Backbone.history.navigate('gallery', {trigger: true});
   },
   render: function(){
     return(
+      React.createElement("form", {encType: "multipart/form-data"}, 
       React.createElement("div", {className: "addproductpage"}, 
         React.createElement("h3", null, "Add Product"), 
         React.createElement("div", {className: "row"}, 
@@ -68,12 +86,13 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
           React.createElement("div", {className: "col-xs-12"}, 
             React.createElement("div", {className: "form-group"}, 
               React.createElement("label", {htmlFor: "exampleInputName2"}, "Image"), 
-              React.createElement("button", {type: "button", className: "btn btn-default add-button"}, "Add Image")
+              React.createElement("input", {type: "file", onChange: this.handleFile, className: "btn btn-default add-button"})
             )
           )
         ), 
         React.createElement("button", {type: "button", onClick: this.handleSubmit, type: "submit", className: "btn btn-default add-button"}, React.createElement("a", {href: "#"}, "Submit"))
       )
+    )
     );
   }
 })
@@ -276,16 +295,16 @@ var HeaderComponent = React.createClass({displayName: "HeaderComponent",
         React.createElement("div", {className: "row"}, 
           React.createElement("div", {className: "col-xs-12"}, 
             React.createElement("ul", {className: "main-nav"}, 
-              React.createElement("li", null, "Home"), 
-              React.createElement("li", null, "Our Story"), 
-              React.createElement("li", null, "Shop")
+              React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
+              React.createElement("li", null, React.createElement("a", {href: "#"}, "Our Story")), 
+              React.createElement("li", null, React.createElement("a", {href: "#"}, "Shop"))
             ), 
 
             React.createElement("h2", {className: "title"}, "Name"), 
 
             React.createElement("ul", {className: "login-nav"}, 
 
-              React.createElement("li", null, "Cart")
+              React.createElement("li", null, React.createElement("a", {href: "#"}, "Cart"))
             )
           )
         ), 
@@ -335,9 +354,21 @@ var ProductCollection = Backbone.Collection.extend({
   }
 });
 
+var Images = Parse.Object.extend("Image");
+
+var ImageCollection = Backbone.Collection.extend({
+  model: Images,
+  url: 'http://tiny-ring-server.herokuapp.com/',
+  parse: function(data){
+    return data;
+  }
+});
+
 module.exports = {
   "Product": Product,
-  "ProductCollection": ProductCollection
+  "ProductCollection": ProductCollection,
+  "Images": Images,
+  "ImageCollection": ImageCollection
 }
 
 },{"backbone":27,"parse":127}],10:[function(require,module,exports){

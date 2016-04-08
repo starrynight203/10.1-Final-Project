@@ -12,6 +12,7 @@ var AddProductComponent = React.createClass({
     return {name: '', description: '', price: ''};
   },
 
+
   handleSubmit: function(e){
     e.preventDefault();
     console.log('submit working');
@@ -31,11 +32,28 @@ var AddProductComponent = React.createClass({
           }
     });
 
+    var image = new model.Images();
+    image.set({
+      'title': "test",
+      'file': '2',
+      'product': "10"
+    });
+
+    image.save(null, {
+      success: function(image) {
+        alert('New image created');
+      },
+      error: function(error) {
+            console.log(error);
+          }
+    });
+
 
     // Backbone.history.navigate('gallery', {trigger: true});
   },
   render: function(){
     return(
+      <form encType="multipart/form-data">
       <div className="addproductpage">
         <h3>Add Product</h3>
         <div className="row">
@@ -66,12 +84,13 @@ var AddProductComponent = React.createClass({
           <div className="col-xs-12">
             <div className="form-group">
               <label htmlFor="exampleInputName2">Image</label>
-              <button type="button" className="btn btn-default add-button">Add Image</button>
+              <input type="file" onChange={this.handleFile} className="btn btn-default add-button"/>
             </div>
           </div>
         </div>
         <button type="button" onClick={this.handleSubmit} type="submit" className="btn btn-default add-button"><a href="#">Submit</a></button>
       </div>
+    </form>
     );
   }
 })

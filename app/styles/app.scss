@@ -36,6 +36,10 @@ body {
   height: 450px;
   color: #fff;
   text-transform: uppercase;
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
 }
 
 .main-nav {
@@ -44,6 +48,10 @@ body {
   li {
     display: inline-block;
     margin: 5px;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
   }
 }
 
@@ -66,6 +74,10 @@ body {
 
 .s-button {
   margin-top: 270px;
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
 }
 
 .shop-button {

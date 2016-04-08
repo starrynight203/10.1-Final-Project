@@ -10,16 +10,16 @@ var HeaderComponent = React.createClass({
         <div className="row">
           <div className="col-xs-12">
             <ul className="main-nav">
-              <li>Home</li>
-              <li>Our Story</li>
-              <li>Shop</li>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Our Story</a></li>
+              <li><a href="#">Shop</a></li>
             </ul>
 
             <h2 className="title">Name</h2>
 
             <ul className="login-nav">
 
-              <li>Cart</li>
+              <li><a href="#">Cart</a></li>
             </ul>
           </div>
         </div>
