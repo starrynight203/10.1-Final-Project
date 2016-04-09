@@ -3,6 +3,7 @@ var ReactDOM = require('react-dom');
 var LinkedStateMixin = require('react/lib/LinkedStateMixin');
 var $ = require('jquery');
 var Backbone = require('backbone');
+var Parse = require('parse');
 var model = require('../models/models');
 
 var AddProductComponent = React.createClass({
@@ -11,7 +12,19 @@ var AddProductComponent = React.createClass({
   getInitialState: function(){
     return {name: '', description: '', price: ''};
   },
+  handleFile: function(e) {
+    var self = this;
+    var reader = new FileReader();
+    var file = e.target.files[0];
 
+    reader.onload = function(upload) {
+      self.setState({
+        data_uri: upload.target.result,
+      });
+    }
+
+    reader.readAsDataURL(file);
+  },
 
   handleSubmit: function(e){
     e.preventDefault();
@@ -33,10 +46,10 @@ var AddProductComponent = React.createClass({
     });
 
     var image = new model.Images();
+    var imageFile = new Parse.File('file.jpg', {base64:this.state.data_uri});
     image.set({
       'title': "test",
-      'file': '2',
-      'product': "10"
+      'file': imageFile
     });
 
     image.save(null, {

@@ -5,6 +5,7 @@ var ReactDOM = require('react-dom');
 var LinkedStateMixin = require('react/lib/LinkedStateMixin');
 var $ = require('jquery');
 var Backbone = require('backbone');
+var Parse = require('parse');
 var model = require('../models/models');
 
 var AddProductComponent = React.createClass({displayName: "AddProductComponent",
@@ -13,7 +14,19 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
   getInitialState: function(){
     return {name: '', description: '', price: ''};
   },
+  handleFile: function(e) {
+    var self = this;
+    var reader = new FileReader();
+    var file = e.target.files[0];
 
+    reader.onload = function(upload) {
+      self.setState({
+        data_uri: upload.target.result,
+      });
+    }
+
+    reader.readAsDataURL(file);
+  },
 
   handleSubmit: function(e){
     e.preventDefault();
@@ -35,10 +48,10 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
     });
 
     var image = new model.Images();
+    var imageFile = new Parse.File('file.jpg', {base64:this.state.data_uri});
     image.set({
       'title': "test",
-      'file': '2',
-      'product': "10"
+      'file': imageFile
     });
 
     image.save(null, {
@@ -99,7 +112,7 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
 
 module.exports = AddProductComponent;
 
-},{"../models/models":9,"backbone":27,"jquery":126,"react":302,"react-dom":170,"react/lib/LinkedStateMixin":191}],2:[function(require,module,exports){
+},{"../models/models":9,"backbone":27,"jquery":126,"parse":127,"react":302,"react-dom":170,"react/lib/LinkedStateMixin":191}],2:[function(require,module,exports){
 "use strict";
 var React = require('react');
 var ReactDOM = require('react-dom');
