@@ -61,7 +61,7 @@ body {
   font-size: 35px;
 }
 
-.login-nav {
+.cart-nav {
   float: right;
   margin: 35px;
   margin-right: 50px;
@@ -91,7 +91,7 @@ body {
   color: #fff;
 }
 
-.ourstory {
+.short-story {
   text-align: center;
   margin-left: 25%;
   width: 652px;
@@ -258,6 +258,10 @@ footer {
   }
 }
 
+.add-button {
+  
+}
+
 /////// Gallery Page ///////
 .side-nav {
   li {
@@ -309,10 +313,85 @@ footer {
   color: #555;
 }
 
+.ring-description {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 .quantity-input {
   width: 68px;
+  margin-bottom: 20px;
 }
 
 .size-input {
   width: 42px;
+  margin-bottom: 50px;
+}
+
+.add-to-cart {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 25px;
+  padding-left: 25px;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+}
+
+/////// Our Story Page ///////
+.bio-page {
+  background:
+  url('https://images.unsplash.com/photo-1450297085576-21d98821f1fb?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=f32a6df98803b0d3d0dc076804a98a4c') center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  height: 450px;
+  color: #fff;
+  text-transform: uppercase;
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+.bio-main-nav {
+  display: inline-block;
+  margin: 35px;
+  li {
+    display: inline-block;
+    margin: 5px;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+}
+
+.about-area {
+  margin-left: 10%;
+  margin-right: 10%;
+  p {
+    color: #777;
+    font-size: 16px;
+  }
+}
+
+.about {
+  border-bottom: 1px solid #777;
+  padding-bottom: 75px;
+  padding-top: 25px;
+  p {
+    font-size: 18px;
+  }
+}
+
+.emily-area {
+  margin-top: 100px;
+  img {
+    height: 400px;
+    width: 325px;
+    margin-left: 15%;
+    border-radius: 5px;
+  }
 }

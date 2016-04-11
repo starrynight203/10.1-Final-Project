@@ -11,6 +11,7 @@ var CreateProductsComponent = require('./../components/createproducts.jsx');
 var AddProductComponent = require('./../components/addproductpage.jsx');
 var GalleryComponent = require('./../components/gallery.jsx');
 var DetailPageComponent = require('./../components/detailpage.jsx');
+var BioPageComponent = require('./../components/biopage.jsx');
 
 var appContainer = document.getElementById('app');
 var Router = Backbone.Router.extend({
@@ -21,7 +22,8 @@ var Router = Backbone.Router.extend({
     'createproduct':'createproductscreen',
     'addproduct':'addproductscreen',
     'gallery':'galleryscreen',
-    'detail':'detailscreen'
+    'detail':'detailscreen',
+    'bio': 'bioscreen'
   },
   index: function(){
     ReactDOM.unmountComponentAtNode(appContainer);
@@ -75,6 +77,14 @@ var Router = Backbone.Router.extend({
 
     ReactDOM.render(
       React.createElement(DetailPageComponent),
+      appContainer
+    );
+  },
+  bioscreen: function(){
+    ReactDOM.unmountComponentAtNode(appContainer);
+
+    ReactDOM.render(
+      React.createElement(BioPageComponent),
       appContainer
     );
   }

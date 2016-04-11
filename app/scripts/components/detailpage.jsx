@@ -19,6 +19,7 @@ var DetailPageComponent = React.createClass({
             <input type="text" className="form-control quantity-input" placeholder=""/>
             <span>Size:</span>
             <input type="text" className="form-control size-input" placeholder=""/>
+            <a href="#" className="add-to-cart">Add to Cart</a>
           </div>
         </div>
       </div>

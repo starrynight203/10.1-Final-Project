@@ -6,6 +6,8 @@ var Backbone = require('backbone');
 var Parse = require('parse');
 var model = require('../models/models');
 
+var pointer;
+
 var AddProductComponent = React.createClass({
   mixins: [LinkedStateMixin],
 
@@ -30,6 +32,7 @@ var AddProductComponent = React.createClass({
     e.preventDefault();
     console.log('submit working');
     var product = new model.Product();
+
     product.set({
       'name': this.state.name,
       'description': this.state.description,
@@ -39,6 +42,7 @@ var AddProductComponent = React.createClass({
     product.save(null, {
       success: function(product) {
         alert('New product created');
+        pointer = product.id;
       },
       error: function(error) {
             console.log(error);
@@ -47,9 +51,11 @@ var AddProductComponent = React.createClass({
 
     var image = new model.Images();
     var imageFile = new Parse.File('file.jpg', {base64:this.state.data_uri});
+
     image.set({
       'title': "test",
-      'file': imageFile
+      'file': imageFile,
+      'productkey': pointer
     });
 
     image.save(null, {

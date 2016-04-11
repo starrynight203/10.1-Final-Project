@@ -44,7 +44,7 @@ var SignupPage = React.createClass({
   render: function(){
     return(
       <div className="background">
-        <a href="#" onClick={this.handleSignUp} className="logout-button">Log Out</a>
+        <a href="#" onClick={this.handleLogOut} className="logout-button">Log Out</a>
         <div className="row login-forms">
          <div className="col-md-6 signup">
            <form id="signup" onSubmit={this.handleSignUp} className="form-signup">
