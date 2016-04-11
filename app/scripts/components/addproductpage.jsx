@@ -6,8 +6,6 @@ var Backbone = require('backbone');
 var Parse = require('parse');
 var model = require('../models/models');
 
-var pointer;
-
 var AddProductComponent = React.createClass({
   mixins: [LinkedStateMixin],
 
@@ -32,44 +30,58 @@ var AddProductComponent = React.createClass({
     e.preventDefault();
     console.log('submit working');
     var product = new model.Product();
+    var self = this;
 
-    product.set({
-      'name': this.state.name,
-      'description': this.state.description,
-      'price': Number(this.state.price)
-    });
+    var saveProduct = function(){
 
-    product.save(null, {
-      success: function(product) {
-        alert('New product created');
-        pointer = product.id;
-      },
-      error: function(error) {
-            console.log(error);
-          }
-    });
+      product.set({
+        'name': self.state.name,
+        'description': self.state.description,
+        'price': Number(self.state.price)
+      });
 
-    var image = new model.Images();
-    var imageFile = new Parse.File('file.jpg', {base64:this.state.data_uri});
+      product.save(null, {
+        success: function(product) {
+          alert('New product created');
+          var pointer = product;
+          saveImage(pointer);
+        },
+        error: function(error) {
+              console.log(error);
+            }
+      });
+    }
 
-    image.set({
-      'title': "test",
-      'file': imageFile,
-      'productkey': pointer
-    });
+    var saveImage = function(pointer){
+      var image = new model.Images();
+      var imageFile = new Parse.File('file.jpg', {base64:self.state.data_uri});
+      console.log(pointer);
+      image.set({
+        'title': "test",
+        'file': imageFile,
+        'productkey': pointer
+      });
 
-    image.save(null, {
-      success: function(image) {
-        alert('New image created');
-      },
-      error: function(error) {
-            console.log(error);
-          }
-    });
+      image.save(null, {
+        success: function(image) {
+          alert('New image created');
+          console.log(image);
+        },
+        error: function(error) {
+              console.log(error);
+            }
+      });
+    }
+
+    saveProduct();
+
+
+
 
 
     // Backbone.history.navigate('gallery', {trigger: true});
   },
+
   render: function(){
     return(
       <form encType="multipart/form-data">
