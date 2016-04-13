@@ -12,13 +12,13 @@ var HeaderComponent = React.createClass({
             <ul className="main-nav">
               <li><a href="#">Home</a></li>
               <li><a href="#bio">Our Story</a></li>
-              <li><a href="#">Shop</a></li>
+              <li><a href="#gallery">Shop</a></li>
             </ul>
 
             <h2 className="title">Name</h2>
 
             <ul className="cart-nav">
-              <li><a href="#">Cart</a></li>
+              <li><a href="#cart">Cart</a></li>
             </ul>
           </div>
         </div>

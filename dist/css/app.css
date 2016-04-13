@@ -5828,7 +5828,7 @@ body {
   background: url("https://images.unsplash.com/photo-1450297166380-cabe503887e5?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=c62232978a807ac821c158c9a15b8b79") center center;
   -webkit-background-size: cover;
   background-size: cover;
-  height: 450px;
+  height: 690px;
   color: #fff;
   text-transform: uppercase; }
   .container-fluid a {
@@ -5860,7 +5860,8 @@ body {
     margin: 5px; }
 
 .s-button {
-  margin-top: 270px; }
+  margin-top: 519px;
+  font-size: 15px; }
   .s-button a {
     text-decoration: none;
     color: #fff; }
@@ -5869,19 +5870,49 @@ body {
   border: 2px solid #fff;
   border-radius: 5px;
   background-color: transparent;
-  padding: 13px 30px;
+  padding: 17px 40px;
   margin-left: 562px;
   text-decoration: none;
   color: #fff; }
 
 .short-story {
   text-align: center;
-  margin-left: 25%;
-  width: 652px; }
+  background-color: #ebddd6;
+  margin-right: 0px;
+  padding-bottom: 25px; }
+  .short-story h2 {
+    font-size: 36px;
+    color: #000; }
+  .short-story p {
+    font-size: 18px;
+    color: #fff;
+    width: 625px;
+    margin-left: 25%; }
+  .short-story a {
+    font-size: 16px;
+    text-decoration: none;
+    color: #000; }
+
+.line {
+  border-left: 1px solid #aaa;
+  height: 50px;
+  width: 1px;
+  margin-right: 387px;
+  margin-left: 636px;
+  margin-top: 15px;
+  margin-bottom: 15px; }
 
 .image-boxes img {
   height: 424px;
-  width: 635px; }
+  width: 655px; }
+
+.picbox1 {
+  padding-right: 0;
+  padding-left: 0; }
+
+.picbox2 {
+  padding-right: 0;
+  padding-left: 0; }
 
 .image-boxes2 img {
   height: 424px;
@@ -5984,6 +6015,10 @@ footer {
 
 .product-forms {
   margin: 0; }
+
+.add-images {
+  height: 85px;
+  width: 85px; }
 
 .addproductpage {
   margin-bottom: 60px; }
@@ -6098,5 +6133,30 @@ footer {
     width: 325px;
     margin-left: 15%;
     border-radius: 5px; }
+
+.heading-page {
+  height: 200px;
+  color: #000;
+  text-transform: uppercase; }
+  .heading-page a {
+    text-decoration: none;
+    color: #000; }
+
+.cart-main-nav {
+  display: inline-block;
+  margin: 35px; }
+  .cart-main-nav li {
+    display: inline-block;
+    margin: 5px; }
+    .cart-main-nav li a {
+      text-decoration: none;
+      color: #000; }
+
+.shopping-cart {
+  margin-left: 35px;
+  margin-right: 35px; }
+
+h3 {
+  font-size: 36px; }
 
 /*# sourceMappingURL=app.css.map */

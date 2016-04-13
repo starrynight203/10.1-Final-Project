@@ -1,12 +1,17 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var HeadingComponent = require('./../components/heading.jsx');
 var $ = require('jquery');
 var Backbone = require('backbone');
 
 var DetailPageComponent = React.createClass({
   render: function(){
+    var product = localStorage.getItem('product');
+    product = JSON.parse(product);
+    console.log(product);
     return(
       <div className="detailpage">
+        <HeadingComponent/>
         <div className="row">
           <div className="col-xs-6">
             <img src="https://images.unsplash.com/photo-1437149639288-c32965270c85?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=e18726e763b47e3fcb2013e13aa0015c" className="detail-img" alt=""/>

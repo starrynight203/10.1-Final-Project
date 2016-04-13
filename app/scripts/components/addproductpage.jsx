@@ -33,7 +33,6 @@ var AddProductComponent = React.createClass({
     var self = this;
 
     var saveProduct = function(){
-
       product.set({
         'name': self.state.name,
         'description': self.state.description,
@@ -57,7 +56,7 @@ var AddProductComponent = React.createClass({
       var imageFile = new Parse.File('file.jpg', {base64:self.state.data_uri});
       console.log(pointer);
       image.set({
-        'title': "test",
+        'title': self.state.name,
         'file': imageFile,
         'productkey': pointer
       });
@@ -74,11 +73,6 @@ var AddProductComponent = React.createClass({
     }
 
     saveProduct();
-
-
-
-
-
     // Backbone.history.navigate('gallery', {trigger: true});
   },
 

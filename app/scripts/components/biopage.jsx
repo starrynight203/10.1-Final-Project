@@ -17,7 +17,7 @@ var BioPageComponent = React.createClass({
             </ul>
 
             <ul className="cart-nav">
-              <li><a href="#">Cart</a></li>
+              <li><a href="#cart">Cart</a></li>
             </ul>
           </div>
         </div>

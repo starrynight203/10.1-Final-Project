@@ -1,13 +1,85 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var HeadingComponent = require('./../components/heading.jsx');
 var $ = require('jquery');
 var Backbone = require('backbone');
+var Parse = require('parse');
 
 var GalleryComponent = React.createClass({
+  getInitialState: function(){
+    return {'products': []};
+  },
+
+  componentWillMount: function(){
+    var self = this;
+    var query = new Parse.Query('Product');
+
+    query.find({
+        success: function(products) {
+          var imageQuery = new Parse.Query('Image').include('productkey');
+
+          imageQuery.containedIn('productkey', products).find({
+            success: function(images){
+              var productsWithImages = products.map(function(product){
+                return product;
+               });
+              self.setState({'products': productsWithImages});
+            },
+            error: function(error) {
+              alert("Error: " + error.code + " " + error.message);
+            }
+          });
+        },
+        error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      })
+  },
+
+  details: function(product, e){
+    e.preventDefault();
+    var product = JSON.stringify(product);
+    localStorage.setItem('product', product);
+    console.log(localStorage.getItem('product'));
+    // Backbone.history.navigate('detail', {trigger: true});
+  },
+
   render: function(){
+    var self = this;
+    var galleryRows = this.state.products.map(function(product){
+      var imageUrl = '';
+      if(product.get('image')){
+        imageUrl = product.get('image').get('file').url();
+      }
+
+        return (
+          <div className="col-xs-3" key={product.id} onClick={self.details.bind(self, product)}>
+            <div className="pic1-row1">
+              <img src={imageUrl} alt=""  />
+            </div>
+            <h5>{product.get('name')}</h5>
+            <span>{product.get('price')}</span>
+          </div>
+        )
+      });
     return(
       <div className="gallerypage">
-        <h3>This is my Gallery</h3>
+        <HeadingComponent/>
+
+        <div className="row">
+          <div className="col-xs-3 side-nav">
+            <ul className="list-names">
+              <li className="elle"><a href="#">Elle</a></li>
+              <li><a href="#">Emily</a></li>
+              <li><a href="#">Faye</a></li>
+              <li><a href="#">Noelle</a></li>
+              <li><a href="#">Custom</a></li>
+            </ul>
+          </div>
+          <div className="col-xs-9">
+            {galleryRows}
+          </div>
+        </div>
       </div>
     );
   }
