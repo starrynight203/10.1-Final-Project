@@ -1,12 +1,14 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var $ = require('jquery');
+var HeadingComponent = require('./../components/heading.jsx');
 var Backbone = require('backbone');
 
 var AdminScreenComponent = React.createClass({
   render: function(){
     return (
       <div className="adminpage">
+        <HeadingComponent/>
         <h3 className="welcome-title">Welcome!</h3>
 
         <div className="row ">
