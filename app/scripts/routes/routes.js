@@ -4,13 +4,15 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 require('backbone-react-component');
 
-var HeaderComponent = require('./../components/header.jsx');
+var HomePageComponent = require('./../components/homepage.jsx');
 var SignupPage = require('./../components/admin-login.jsx');
 var AdminScreenComponent = require('./../components/adminscreen.jsx');
 var CreateProductsComponent = require('./../components/createproducts.jsx');
 var AddProductComponent = require('./../components/addproductpage.jsx');
 var GalleryComponent = require('./../components/gallery.jsx');
 var DetailPageComponent = require('./../components/detailpage.jsx');
+var BioPageComponent = require('./../components/biopage.jsx');
+var CartComponent = require('./../components/cart.jsx');
 
 var appContainer = document.getElementById('app');
 var Router = Backbone.Router.extend({
@@ -18,16 +20,19 @@ var Router = Backbone.Router.extend({
     '':'index',
     'adminlogin':'adminloginpage',
     'adminroute':'adminroutescreen',
-    'createproduct':'createproductscreen',
-    'addproduct':'addproductscreen',
+    'createproduct':'createproductscreen', // list view
+    'addproduct':'productAddEdit', //form view
+    'product/:id/': 'productAddEdit', // product edit
     'gallery':'galleryscreen',
-    'detail':'detailscreen'
+    'detail':'detailscreen',
+    'bio': 'bioscreen',
+    'cart': 'cartscreen'
   },
   index: function(){
     ReactDOM.unmountComponentAtNode(appContainer);
 
     ReactDOM.render(
-      React.createElement(HeaderComponent),
+      React.createElement(HomePageComponent),
       appContainer
     );
   },
@@ -55,10 +60,18 @@ var Router = Backbone.Router.extend({
       appContainer
     );
   },
-  addproductscreen: function(){
+  productAddEdit: function(){
     ReactDOM.unmountComponentAtNode(appContainer);
     ReactDOM.render(
       React.createElement(AddProductComponent),
+      appContainer
+    );
+  },
+  productAddEdit: function(id){
+    var self = this;
+    ReactDOM.unmountComponentAtNode(appContainer);
+    ReactDOM.render(
+      React.createElement(AddProductComponent, {router: self, productId: id}),
       appContainer
     );
   },
@@ -75,6 +88,22 @@ var Router = Backbone.Router.extend({
 
     ReactDOM.render(
       React.createElement(DetailPageComponent),
+      appContainer
+    );
+  },
+  bioscreen: function(){
+    ReactDOM.unmountComponentAtNode(appContainer);
+
+    ReactDOM.render(
+      React.createElement(BioPageComponent),
+      appContainer
+    );
+  },
+  cartscreen: function(){
+    ReactDOM.unmountComponentAtNode(appContainer);
+
+    ReactDOM.render(
+      React.createElement(CartComponent),
       appContainer
     );
   }

@@ -3,39 +3,71 @@ var ReactDOM = require('react-dom');
 var LinkedStateMixin = require('react/lib/LinkedStateMixin');
 var $ = require('jquery');
 var Backbone = require('backbone');
+var Parse = require('parse');
 var model = require('../models/models');
 
 var AddProductComponent = React.createClass({
   mixins: [LinkedStateMixin],
 
   getInitialState: function(){
-    return {name: '', description: '', price: ''};
+    return {name: '', description: '', price: '', images: []};
+  },
+  componentWillMount: function(){
+    var self = this;
+    if(!self.props.productId){
+      return;
+    }
+    var query = new Parse.Query('Product');
+    query.get(self.props.productId, {
+      success: function(product){
+        self.setState({
+          name: product.get('name'),
+          price: product.get('price'),
+          description: product.get('description')
+        });
+      }
+    });
+  },
+
+  handleFile: function(e) {
+    var file = e.target.files[0];
+    var images = this.state.images;
+    images.push(new Parse.File(file.name, file));
+    this.setState({'images': images});
   },
 
   handleSubmit: function(e){
     e.preventDefault();
-    console.log('submit working');
-    var product = new model.Product();
+    var self = this;
+    var router = this.props.router;
+    var parseImages = this.state.images.map(function(image){
+      image.save();
+      return image;
+    });
+
+    var product = new model.Product({id: self.props.productId});
     product.set({
-      'name': this.state.name,
-      'description': this.state.description,
-      'price': Number(this.state.price)
+      'name': self.state.name,
+      'description': self.state.description,
+      'price': Number(self.state.price),
+      'images': parseImages
     });
 
     product.save(null, {
       success: function(product) {
         alert('New product created');
+        Backbone.history.navigate('createproduct', {trigger: true});
       },
       error: function(error) {
             console.log(error);
           }
     });
-
-
     // Backbone.history.navigate('gallery', {trigger: true});
   },
+
   render: function(){
     return(
+      <form encType="multipart/form-data">
       <div className="addproductpage">
         <h3>Add Product</h3>
         <div className="row">
@@ -66,12 +98,13 @@ var AddProductComponent = React.createClass({
           <div className="col-xs-12">
             <div className="form-group">
               <label htmlFor="exampleInputName2">Image</label>
-              <button type="button" className="btn btn-default add-button">Add Image</button>
+              <input type="file" onChange={this.handleFile} className="btn btn-default add-button"/>
             </div>
           </div>
         </div>
-        <button type="button" onClick={this.handleSubmit} type="submit" className="btn btn-default add-button"><a href="#">Submit</a></button>
+        <button type="button" onClick={this.handleSubmit} type="submit" className="btn btn-default add-button">Submit</button>
       </div>
+    </form>
     );
   }
 })
