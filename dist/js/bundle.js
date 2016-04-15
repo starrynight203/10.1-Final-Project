@@ -543,7 +543,7 @@ var ReactDOM = require('react-dom');
 var $ = require('jquery');
 var Backbone = require('backbone');
 
-var HeaderComponent = React.createClass({displayName: "HeaderComponent",
+var HomePageComponent = React.createClass({displayName: "HomePageComponent",
   render: function(){
     return (
       React.createElement("div", {className: "container-fluid"}, 
@@ -572,7 +572,7 @@ var HeaderComponent = React.createClass({displayName: "HeaderComponent",
   }
 })
 
-module.exports = HeaderComponent;
+module.exports = HomePageComponent;
 
 },{"backbone":30,"jquery":129,"react":305,"react-dom":173}],10:[function(require,module,exports){
 "use strict";
