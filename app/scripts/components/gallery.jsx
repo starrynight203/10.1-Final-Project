@@ -4,6 +4,7 @@ var HeadingComponent = require('./../components/heading.jsx');
 var $ = require('jquery');
 var Backbone = require('backbone');
 var Parse = require('parse');
+var CartItems = require('./../models/models.js').CartItems;
 
 var GalleryComponent = React.createClass({
   getInitialState: function(){
@@ -15,25 +16,13 @@ var GalleryComponent = React.createClass({
     var query = new Parse.Query('Product');
 
     query.find({
-        success: function(products) {
-          var imageQuery = new Parse.Query('Image').include('productkey');
-
-          imageQuery.containedIn('productkey', products).find({
-            success: function(images){
-              var productsWithImages = products.map(function(product){
-                return product;
-               });
-              self.setState({'products': productsWithImages});
-            },
-            error: function(error) {
-              alert("Error: " + error.code + " " + error.message);
-            }
-          });
-        },
-        error: function(error) {
-          alert("Error: " + error.code + " " + error.message);
-        }
-      })
+      success: function(products) {
+        self.setState({'products': products});
+      },
+      error: function(error) {
+        alert("Error: " + error.code + " " + error.message);
+      }
+    })
   },
 
   details: function(product, e){
@@ -41,16 +30,34 @@ var GalleryComponent = React.createClass({
     var product = JSON.stringify(product);
     localStorage.setItem('product', product);
     console.log(localStorage.getItem('product'));
-    // Backbone.history.navigate('detail', {trigger: true});
+    Backbone.history.navigate('detail', {trigger: true});
   },
+  addToCart: function(product){
+   console.log("addToCart");
+
+   // 1. Create a new cart object
+   var cart = new CartItems({product: product.id});
+
+   // 3. Save the cart object
+   cart.save(null, {
+       success: function(results){
+         console.log(results);
+         Backbone.history.navigate('cart', {trigger: true});
+       },
+       error: function(model, err){
+         console.log(err);
+       }
+   });
+
+   // 4. Update the cart icon to show number of items in the cart
+
+ },
 
   render: function(){
     var self = this;
     var galleryRows = this.state.products.map(function(product){
-      var imageUrl = '';
-      if(product.get('image')){
-        imageUrl = product.get('image').get('file').url();
-      }
+      var imageUrl = product.get("images").length > 0 ? product.get("images")[0].url(): '';
+
 
         return (
           <div className="col-xs-3" key={product.id} onClick={self.details.bind(self, product)}>
@@ -58,9 +65,10 @@ var GalleryComponent = React.createClass({
               <img src={imageUrl} alt=""  />
             </div>
             <h5>{product.get('name')}</h5>
-            <span>{product.get('price')}</span>
+            <span>${product.get('price')}</span>
+            <button type='button' onClick={self.addToCart.bind(self,product)} className='btn btn-default'>Add to Cart </button>
           </div>
-        )
+        );
       });
     return(
       <div className="gallerypage">

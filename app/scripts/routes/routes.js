@@ -4,7 +4,7 @@ var ReactDOM = require('react-dom');
 var Backbone = require('backbone');
 require('backbone-react-component');
 
-var HeaderComponent = require('./../components/header.jsx');
+var HomePageComponent = require('./../components/homepage.jsx');
 var SignupPage = require('./../components/admin-login.jsx');
 var AdminScreenComponent = require('./../components/adminscreen.jsx');
 var CreateProductsComponent = require('./../components/createproducts.jsx');
@@ -20,8 +20,9 @@ var Router = Backbone.Router.extend({
     '':'index',
     'adminlogin':'adminloginpage',
     'adminroute':'adminroutescreen',
-    'createproduct':'createproductscreen',
-    'addproduct':'addproductscreen',
+    'createproduct':'createproductscreen', // list view
+    'addproduct':'productAddEdit', //form view
+    'product/:id/': 'productAddEdit', // product edit
     'gallery':'galleryscreen',
     'detail':'detailscreen',
     'bio': 'bioscreen',
@@ -31,7 +32,7 @@ var Router = Backbone.Router.extend({
     ReactDOM.unmountComponentAtNode(appContainer);
 
     ReactDOM.render(
-      React.createElement(HeaderComponent),
+      React.createElement(HomePageComponent),
       appContainer
     );
   },
@@ -59,10 +60,18 @@ var Router = Backbone.Router.extend({
       appContainer
     );
   },
-  addproductscreen: function(){
+  productAddEdit: function(){
     ReactDOM.unmountComponentAtNode(appContainer);
     ReactDOM.render(
       React.createElement(AddProductComponent),
+      appContainer
+    );
+  },
+  productAddEdit: function(id){
+    var self = this;
+    ReactDOM.unmountComponentAtNode(appContainer);
+    ReactDOM.render(
+      React.createElement(AddProductComponent, {router: self, productId: id}),
       appContainer
     );
   },
