@@ -10,69 +10,58 @@ var AddProductComponent = React.createClass({
   mixins: [LinkedStateMixin],
 
   getInitialState: function(){
-    return {name: '', description: '', price: ''};
+    return {name: '', description: '', price: '', images: []};
   },
-  handleFile: function(e) {
+  componentWillMount: function(){
     var self = this;
-    var reader = new FileReader();
-    var file = e.target.files[0];
-
-    reader.onload = function(upload) {
-      self.setState({
-        data_uri: upload.target.result,
-      });
+    if(!self.props.productId){
+      return;
     }
+    var query = new Parse.Query('Product');
+    query.get(self.props.productId, {
+      success: function(product){
+        self.setState({
+          name: product.get('name'),
+          price: product.get('price'),
+          description: product.get('description')
+        });
+      }
+    });
+  },
 
-    reader.readAsDataURL(file);
+  handleFile: function(e) {
+    var file = e.target.files[0];
+    var images = this.state.images;
+    images.push(new Parse.File(file.name, file));
+    this.setState({'images': images});
   },
 
   handleSubmit: function(e){
     e.preventDefault();
-    console.log('submit working');
-    var product = new model.Product();
     var self = this;
+    var router = this.props.router;
+    var parseImages = this.state.images.map(function(image){
+      image.save();
+      return image;
+    });
 
-    var saveProduct = function(){
-      product.set({
-        'name': self.state.name,
-        'description': self.state.description,
-        'price': Number(self.state.price)
-      });
+    var product = new model.Product({id: self.props.productId});
+    product.set({
+      'name': self.state.name,
+      'description': self.state.description,
+      'price': Number(self.state.price),
+      'images': parseImages
+    });
 
-      product.save(null, {
-        success: function(product) {
-          alert('New product created');
-          var pointer = product;
-          saveImage(pointer);
-        },
-        error: function(error) {
-              console.log(error);
-            }
-      });
-    }
-
-    var saveImage = function(pointer){
-      var image = new model.Images();
-      var imageFile = new Parse.File('file.jpg', {base64:self.state.data_uri});
-      console.log(pointer);
-      image.set({
-        'title': self.state.name,
-        'file': imageFile,
-        'productkey': pointer
-      });
-
-      image.save(null, {
-        success: function(image) {
-          alert('New image created');
-          console.log(image);
-        },
-        error: function(error) {
-              console.log(error);
-            }
-      });
-    }
-
-    saveProduct();
+    product.save(null, {
+      success: function(product) {
+        alert('New product created');
+        Backbone.history.navigate('createproduct', {trigger: true});
+      },
+      error: function(error) {
+            console.log(error);
+          }
+    });
     // Backbone.history.navigate('gallery', {trigger: true});
   },
 
@@ -113,7 +102,7 @@ var AddProductComponent = React.createClass({
             </div>
           </div>
         </div>
-        <button type="button" onClick={this.handleSubmit} type="submit" className="btn btn-default add-button"><a href="#">Submit</a></button>
+        <button type="button" onClick={this.handleSubmit} type="submit" className="btn btn-default add-button">Submit</button>
       </div>
     </form>
     );

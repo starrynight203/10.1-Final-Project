@@ -5828,7 +5828,7 @@ body {
   background: url("https://images.unsplash.com/photo-1450297166380-cabe503887e5?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=c62232978a807ac821c158c9a15b8b79") center center;
   -webkit-background-size: cover;
   background-size: cover;
-  height: 690px;
+  height: 705px;
   color: #fff;
   text-transform: uppercase; }
   .container-fluid a {
@@ -5902,27 +5902,89 @@ body {
   margin-top: 15px;
   margin-bottom: 15px; }
 
-.image-boxes img {
-  height: 424px;
-  width: 655px; }
+.image-boxes {
+  margin-top: 66px; }
+  .image-boxes img {
+    height: 424px;
+    width: 655px; }
 
 .picbox1 {
   padding-right: 0;
   padding-left: 0; }
+  .picbox1 img {
+    border-top: 6px solid #fff;
+    border-bottom: 3px solid #fff;
+    border-right: 3px solid #fff;
+    border-left: 3px solid #fff; }
 
 .picbox2 {
   padding-right: 0;
   padding-left: 0; }
+  .picbox2 img {
+    border-top: 6px solid #fff;
+    border-bottom: 3px solid #fff;
+    border-right: 3px solid #fff;
+    border-left: 3px solid #fff; }
 
 .image-boxes2 img {
   height: 424px;
-  width: 635px; }
+  width: 655px; }
 
-.carousel-inner img {
+.picbox3 {
+  padding-right: 0;
+  padding-left: 0; }
+  .picbox3 img {
+    border-top: 3px solid #fff;
+    border-bottom: 6px solid #fff;
+    border-right: 3px solid #fff;
+    border-left: 3px solid #fff; }
+
+.picbox4 {
+  padding-right: 0;
+  padding-left: 0; }
+  .picbox4 img {
+    border-top: 3px solid #fff;
+    border-bottom: 6px solid #fff;
+    border-right: 3px solid #fff;
+    border-left: 3px solid #fff; }
+
+.container {
+  width: 1280px;
+  height: 400px;
+  padding-left: 0;
+  padding-right: 0; }
+
+.slide {
+  margin-top: 6px; }
+
+.slide1 {
+  height: 400px; }
+
+.slide2 {
+  height: 400px; }
+
+.slide3 {
+  height: 400px; }
+
+.slide4 {
   height: 400px; }
 
 .insta-name {
-  text-align: center; }
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+  color: #bbb; }
+  .insta-name h2 {
+    font-size: 36px; }
+
+.insta-name a {
+  text-decoration: none;
+  color: #bbb; }
+
+.instapics {
+  margin-right: 40px;
+  margin-left: 40px;
+  margin-bottom: 60px; }
 
 .instagram-images {
   margin-bottom: 20px; }
@@ -5931,22 +5993,26 @@ body {
   margin-bottom: 20px; }
 
 footer {
-  background-color: #ffeeee; }
+  background-color: rgba(205, 169, 157, 0.3);
+  color: #666;
+  padding: 100px 50px; }
   footer a {
     text-decoration: none;
     font-size: 13px;
-    color: black; }
+    color: #aaa; }
   footer li {
     list-style: none; }
+  footer h3 {
+    font-size: 22px; }
 
 .background {
-  background: url("https://images.unsplash.com/photo-1446071103084-c257b5f70672?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=21cf7e2e461fa5c32c6bc99ecd38c754") center center;
+  background-color: #e2dada;
   -webkit-background-size: cover;
   background-size: cover; }
 
 .logout-button {
   padding: 15px;
-  border: 2px solid #ccc;
+  border: 2px solid black;
   border-radius: 5px;
   float: right;
   margin: 10px;
@@ -5964,7 +6030,7 @@ footer {
 .signup {
   display: inline-block;
   padding: 15px;
-  border: 2px solid #ccc;
+  border: 2px solid black;
   border-radius: 5px;
   margin: 5px;
   width: 450px; }
@@ -5972,29 +6038,33 @@ footer {
 .signin {
   display: inline-block;
   padding: 15px;
-  border: 2px solid #ccc;
+  border: 2px solid black;
   border-radius: 5px;
   margin: 5px;
   width: 450px; }
 
+.heading-page {
+  margin-right: 0px; }
+
 .welcome-title {
-  margin-bottom: 25px;
-  font-size: 30px; }
+  margin-bottom: 100px;
+  font-size: 30px;
+  margin-left: 88px; }
 
 .adminscreen {
   height: 150px; }
 
 .products-button {
-  padding: 15px;
+  padding: 50px;
   border: 2px solid #ccc;
   border-radius: 5px;
-  margin: 5px; }
+  margin: 25%; }
 
 .orders-button {
-  padding: 15px;
+  padding: 50px;
   border: 2px solid #ccc;
   border-radius: 5px;
-  margin: 5px; }
+  margin: 25%; }
 
 .createproductspage h3 {
   display: inline-block;
@@ -6113,8 +6183,11 @@ footer {
       color: #fff; }
 
 .about-area {
-  margin-left: 10%;
-  margin-right: 10%; }
+  margin-left: 15%;
+  margin-right: 15%; }
+  .about-area h2 {
+    margin-top: 73px;
+    margin-bottom: 23px; }
   .about-area p {
     color: #777;
     font-size: 16px; }
@@ -6127,6 +6200,7 @@ footer {
     font-size: 18px; }
 
 .emily-area {
+  margin-bottom: 100px;
   margin-top: 100px; }
   .emily-area img {
     height: 400px;

@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var $ = require('jquery');
+var HeadingComponent = require('./../components/heading.jsx');
 var Backbone = require('backbone');
 var Parse = require('parse');
 
@@ -41,10 +42,11 @@ var SignupPage = React.createClass({
   //   console.log('logout working');
   //   Backbone.history.navigate('index', {trigger: true});
   // }, //////// fix this to have log out button on multiple pages
+  // <a href="#" onClick={this.handleLogOut} className="logout-button">Log Out</a>
   render: function(){
     return(
       <div className="background">
-        <a href="#" onClick={this.handleLogOut} className="logout-button">Log Out</a>
+        <HeadingComponent/>
         <div className="row login-forms">
          <div className="col-md-6 signup">
            <form id="signup" onSubmit={this.handleSignUp} className="form-signup">

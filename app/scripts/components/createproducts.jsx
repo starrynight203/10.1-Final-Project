@@ -15,40 +15,19 @@ var CreateProductsComponent = React.createClass({
     var query = new Parse.Query('Product');
 
     query.find({
-        success: function(products) {
-          var imageQuery = new Parse.Query('Image').include('productkey');
-
-          imageQuery.containedIn('productkey', products).find({
-            success: function(images){
-
-              var productsWithImages = products.map(function(product){
-
-                _.each(images, function(image){
-                  if(image.get('productkey').id == product.id){
-                    product.set('image', image);
-                  }
-                });
-                return product;
-               });
-
-              self.setState({'products': productsWithImages});
-            },
-            error: function(error) {
-              alert("Error: " + error.code + " " + error.message);
-            }
-          });
-        },
-        error: function(error) {
-          alert("Error: " + error.code + " " + error.message);
-        }
-      })
+      success: function(products) {
+        self.setState({'products': products});
+      },
+      error: function(error) {
+        alert("Error: " + error.code + " " + error.message);
+      }
+    })
   },
+
   render: function(){
     var productRows = this.state.products.map(function(product){
-    var imageUrl = '';
-    if(product.get('image')){
-      imageUrl = product.get('image').get('file').url();
-    }
+
+      var imageUrl = product.get("images").length > 0 ? product.get("images")[0].url() : '';
 
       return (
         <tr key={product.id}>
@@ -56,7 +35,7 @@ var CreateProductsComponent = React.createClass({
           <td><img src={imageUrl} /></td>
           <td>{product.get('price')}</td>
           <td>{product.get('description')}</td>
-          <td><a href={"#addproduct"}>Edit</a></td>
+          <td><a href={"#product/" + product.id + "/"}>Edit</a></td>
         </tr>
       )
     });

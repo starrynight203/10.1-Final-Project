@@ -2,29 +2,49 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var HeadingComponent = require('./../components/heading.jsx');
 var $ = require('jquery');
+var Parse = require('parse');
 var Backbone = require('backbone');
+var Product = require('./../models/models.js').Product;
 
 var DetailPageComponent = React.createClass({
+  getInitialState: function(){
+    return {'product': new Product()};
+  },
+  componentWillMount: function(){
+    var self = this;
+    var query = new Parse.Query('Product');
+
+    query.get({
+      success: function(product) {
+        self.setState({'product': product});
+      },
+      error: function(error) {
+        alert("Error: " + error.code + " " + error.message);
+      }
+    })
+  },
   render: function(){
-    var product = localStorage.getItem('product');
-    product = JSON.parse(product);
-    console.log(product);
+
+  var product = this.state.product;
+  var imageUrl = product.get("images") ? product.get("images")[0].url(): '';
     return(
       <div className="detailpage">
         <HeadingComponent/>
         <div className="row">
           <div className="col-xs-6">
-            <img src="https://images.unsplash.com/photo-1437149639288-c32965270c85?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=e18726e763b47e3fcb2013e13aa0015c" className="detail-img" alt=""/>
+            <img src={imageUrl} className="detail-img" alt=""/>
           </div>
           <div className="col-xs-6">
-            <h3 className="ring-name">Elle</h3>
-            <span className="price">$25</span>
-            <p className="ring-description">One crystal hairpin bead spans the top of the ring. Classic for  a reason, this ring will stand the test of time.</p>
-            <span>Quantity:</span>
-            <input type="text" className="form-control quantity-input" placeholder=""/>
-            <span>Size:</span>
-            <input type="text" className="form-control size-input" placeholder=""/>
-            <a href="#" className="add-to-cart">Add to Cart</a>
+            <div>
+              <h3 className="ring-name" key={product.id}>{product.get('name')}</h3>
+              <span className="price">${product.get('price')}</span>
+              <p className="ring-description">{product.get('description')}</p>
+              <span>Quantity:</span>
+              <input type="text" className="form-control quantity-input" placeholder=""/>
+              <span>Size:</span>
+              <input type="text" className="form-control size-input" placeholder=""/>
+              <a href="#" className="add-to-cart">Add to Cart</a>
+            </div>
           </div>
         </div>
       </div>

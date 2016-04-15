@@ -27,13 +27,11 @@ body {
 }
 
 .container-fluid {
-  // background: url('https://images.unsplash.com/photo-1438762539682-535757d151ad?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=eb7049f9c6ac4a0a866d775b632cc9fd') center center;
-  // background: url('https://images.unsplash.com/photo-1450297085576-21d98821f1fb?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=f32a6df98803b0d3d0dc076804a98a4c') center center;
   background:
   url('https://images.unsplash.com/photo-1450297166380-cabe503887e5?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=c62232978a807ac821c158c9a15b8b79') center center;
   -webkit-background-size: cover;
   background-size: cover;
-  height: 690px;
+  height: 705px;
   color: #fff;
   text-transform: uppercase;
   a {
@@ -127,6 +125,7 @@ body {
 }
 
 .image-boxes {
+  margin-top: 66px;
   img {
   height: 424px;
   width: 655px;
@@ -136,29 +135,102 @@ body {
 .picbox1 {
   padding-right: 0;
   padding-left: 0;
+  img {
+    border-top: 6px solid #fff;
+    border-bottom: 3px solid #fff;
+    border-right: 3px solid #fff;
+    border-left: 3px solid #fff;
+  }
 }
 
 .picbox2 {
   padding-right: 0;
   padding-left: 0;
+  img {
+    border-top: 6px solid #fff;
+    border-bottom: 3px solid #fff;
+    border-right: 3px solid #fff;
+    border-left: 3px solid #fff;
+  }
 }
 
 .image-boxes2 {
   img {
     height: 424px;
-    width: 635px;
+    width: 655px;
   }
 }
 
-
-.carousel-inner {
+.picbox3 {
+  padding-right: 0;
+  padding-left: 0;
   img {
-    height: 400px;
+    border-top: 3px solid #fff;
+    border-bottom: 6px solid #fff;
+    border-right: 3px solid #fff;
+    border-left: 3px solid #fff;
+  }
+}
+
+.picbox4 {
+  padding-right: 0;
+  padding-left: 0;
+  img {
+    border-top: 3px solid #fff;
+    border-bottom: 6px solid #fff;
+    border-right: 3px solid #fff;
+    border-left: 3px solid #fff;
+  }
+}
+
+.container {
+  width: 1280px;
+  height: 400px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.slide {
+  margin-top: 6px;
+}
+
+.slide1 {
+  height: 400px;
+}
+
+.slide2 {
+  height: 400px;
+}
+
+.slide3 {
+  height: 400px;
+}
+
+.slide4 {
+  height: 400px;
+}
+
+.insta-name {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+  color: #bbb;
+  h2 {
+    font-size: 36px;
   }
 }
 
 .insta-name {
-  text-align: center;
+  a {
+    text-decoration: none;
+    color: #bbb;
+  }
+}
+
+.instapics {
+  margin-right: 40px;
+  margin-left: 40px;
+  margin-bottom: 60px;
 }
 
 .instagram-images {
@@ -172,28 +244,34 @@ body {
 /////// Footer /////////
 
 footer {
-  background-color: #ffeeee;
+  background-color: rgba(205,169,157,.3);
+  color: #666;
+  padding: 100px 50px;
   a {
     text-decoration: none;
     font-size: 13px;
-    color: black;
+    color: #aaa;
   }
   li {
     list-style: none;
+  }
+  h3 {
+    font-size: 22px;
   }
 }
 
 
 ////////// Sign in page ////////
 .background {
-  background: url('https://images.unsplash.com/photo-1446071103084-c257b5f70672?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=21cf7e2e461fa5c32c6bc99ecd38c754') center center;
+  // background: url('https://images.unsplash.com/photo-1446071103084-c257b5f70672?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=21cf7e2e461fa5c32c6bc99ecd38c754') center center;
+  background-color: #e2dada;
   -webkit-background-size: cover;
   background-size: cover;
 }
 
 .logout-button {
   padding: 15px;
-  border: 2px solid #ccc;
+  border: 2px solid black;
   border-radius: 5px;
   float: right;
   margin: 10px;
@@ -214,7 +292,7 @@ footer {
 .signup {
   display: inline-block;
   padding: 15px;
-  border: 2px solid #ccc;
+  border: 2px solid black;
   border-radius: 5px;
   margin: 5px;
   // margin-left: 25%;
@@ -224,7 +302,7 @@ footer {
 .signin {
   display: inline-block;
   padding: 15px;
-  border: 2px solid #ccc;
+  border: 2px solid black;
   border-radius: 5px;
   margin: 5px;
   // margin-left: 25%;
@@ -232,10 +310,14 @@ footer {
   // float: right;
 }
 
+.heading-page {
+  margin-right: 0px;
+}
 //////// Admin Screen page //////
 .welcome-title {
-  margin-bottom: 25px;
+  margin-bottom: 100px;
   font-size: 30px;
+  margin-left: 88px;
 }
 
 .adminscreen {
@@ -243,17 +325,17 @@ footer {
 }
 
 .products-button {
-  padding: 15px;
+  padding: 50px;
   border: 2px solid #ccc;
   border-radius: 5px;
-  margin: 5px;
+  margin: 25%;
 }
 
 .orders-button {
-  padding: 15px;
+  padding: 50px;
   border: 2px solid #ccc;
   border-radius: 5px;
-  margin: 5px;
+  margin: 25%;
 }
 
 /////// Create Product Page //////
@@ -414,8 +496,12 @@ footer {
 }
 
 .about-area {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
+  h2 {
+    margin-top: 73px;
+    margin-bottom: 23px;
+  }
   p {
     color: #777;
     font-size: 16px;
@@ -432,6 +518,7 @@ footer {
 }
 
 .emily-area {
+  margin-bottom: 100px;
   margin-top: 100px;
   img {
     height: 400px;
