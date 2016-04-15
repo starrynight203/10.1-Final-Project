@@ -269,23 +269,22 @@ var ReactDOM = require('react-dom');
 var $ = require('jquery');
 var Backbone = require('backbone');
 
-var HeaderComponent = React.createClass({displayName: "HeaderComponent",
+var HomePageComponent = React.createClass({displayName: "HomePageComponent",
   render: function(){
     return (
       React.createElement("div", {className: "container-fluid"}, 
         React.createElement("div", {className: "row"}, 
           React.createElement("div", {className: "col-xs-12"}, 
             React.createElement("ul", {className: "main-nav"}, 
-              React.createElement("li", null, "Home"), 
-              React.createElement("li", null, "Our Story"), 
-              React.createElement("li", null, "Shop")
+              React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
+              React.createElement("li", null, React.createElement("a", {href: "#bio"}, "Our Story")), 
+              React.createElement("li", null, React.createElement("a", {href: "#gallery"}, "Shop"))
             ), 
 
             React.createElement("h2", {className: "title"}, "Name"), 
 
-            React.createElement("ul", {className: "login-nav"}, 
-
-              React.createElement("li", null, "Cart")
+            React.createElement("ul", {className: "cart-nav"}, 
+              React.createElement("li", null, React.createElement("a", {href: "#cart"}, "Cart"))
             )
           )
         ), 
@@ -299,7 +298,7 @@ var HeaderComponent = React.createClass({displayName: "HeaderComponent",
   }
 })
 
-module.exports = HeaderComponent;
+module.exports = HomePageComponent;
 
 },{"backbone":27,"jquery":126,"react":302,"react-dom":170}],8:[function(require,module,exports){
 "use strict";
