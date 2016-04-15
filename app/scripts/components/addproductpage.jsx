@@ -45,7 +45,7 @@ var AddProductComponent = React.createClass({
       return image;
     });
 
-    var product = new model.Product();
+    var product = new model.Product({id: self.props.productId});
     product.set({
       'name': self.state.name,
       'description': self.state.description,
@@ -56,6 +56,7 @@ var AddProductComponent = React.createClass({
     product.save(null, {
       success: function(product) {
         alert('New product created');
+        Backbone.history.navigate('createproduct', {trigger: true});
       },
       error: function(error) {
             console.log(error);
@@ -101,7 +102,7 @@ var AddProductComponent = React.createClass({
             </div>
           </div>
         </div>
-        <button type="button" onClick={this.handleSubmit} type="submit" className="btn btn-default add-button"><a href="#createproduct">Submit</a></button>
+        <button type="button" onClick={this.handleSubmit} type="submit" className="btn btn-default add-button">Submit</button>
       </div>
     </form>
     );

@@ -4,6 +4,7 @@ var HeadingComponent = require('./../components/heading.jsx');
 var $ = require('jquery');
 var Backbone = require('backbone');
 var Parse = require('parse');
+var CartItems = require('./../models/models.js').CartItems;
 
 var GalleryComponent = React.createClass({
   getInitialState: function(){
@@ -31,6 +32,26 @@ var GalleryComponent = React.createClass({
     console.log(localStorage.getItem('product'));
     Backbone.history.navigate('detail', {trigger: true});
   },
+  addToCart: function(product){
+   console.log("addToCart");
+
+   // 1. Create a new cart object
+   var cart = new CartItems({product: product.id});
+
+   // 3. Save the cart object
+   cart.save(null, {
+       success: function(results){
+         console.log(results);
+         Backbone.history.navigate('cart', {trigger: true});
+       },
+       error: function(model, err){
+         console.log(err);
+       }
+   });
+
+   // 4. Update the cart icon to show number of items in the cart
+
+ },
 
   render: function(){
     var self = this;
@@ -45,6 +66,7 @@ var GalleryComponent = React.createClass({
             </div>
             <h5>{product.get('name')}</h5>
             <span>${product.get('price')}</span>
+            <button type='button' onClick={self.addToCart.bind(self,product)} className='btn btn-default'>Add to Cart </button>
           </div>
         );
       });
