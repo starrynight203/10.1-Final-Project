@@ -419,8 +419,8 @@ var DetailPageComponent = React.createClass({displayName: "DetailPageComponent",
   componentWillMount: function(){
     var self = this;
     var query = new Parse.Query('Product');
-
-    query.get({
+  
+    query.get(this.props.productId, {
       success: function(product) {
         self.setState({'product': product});
       },
@@ -524,9 +524,9 @@ var GalleryComponent = React.createClass({displayName: "GalleryComponent",
 
 
         return (
-          React.createElement("div", {className: "col-xs-3", key: product.id, onClick: self.details.bind(self, product)}, 
+          React.createElement("div", {className: "col-xs-3", key: product.id}, 
             React.createElement("div", {className: "pic1-row1"}, 
-              React.createElement("img", {src: imageUrl, alt: ""})
+              React.createElement("a", {href: "#detail/" + product.id}, React.createElement("img", {src: imageUrl, alt: ""}))
             ), 
             React.createElement("h5", null, product.get('name')), 
             React.createElement("span", null, "$", product.get('price')), 
@@ -811,7 +811,7 @@ var Router = Backbone.Router.extend({
     'addproduct':'productAddEdit', //form view
     'product/:id/': 'productAddEdit', // product edit
     'gallery':'galleryscreen',
-    'detail':'detailscreen',
+    'detail/:id':'detailscreen',
     'bio': 'bioscreen',
     'cart': 'cartscreen'
   },
@@ -870,11 +870,12 @@ var Router = Backbone.Router.extend({
       appContainer
     );
   },
-  detailscreen: function(){
+  detailscreen: function(id){
+    var self = this;
     ReactDOM.unmountComponentAtNode(appContainer);
 
     ReactDOM.render(
-      React.createElement(DetailPageComponent),
+      React.createElement(DetailPageComponent, {router: self, productId: id}),
       appContainer
     );
   },

@@ -13,8 +13,8 @@ var DetailPageComponent = React.createClass({
   componentWillMount: function(){
     var self = this;
     var query = new Parse.Query('Product');
-
-    query.get({
+  
+    query.get(this.props.productId, {
       success: function(product) {
         self.setState({'product': product});
       },

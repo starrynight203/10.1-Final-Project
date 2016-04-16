@@ -60,9 +60,9 @@ var GalleryComponent = React.createClass({
 
 
         return (
-          <div className="col-xs-3" key={product.id} onClick={self.details.bind(self, product)}>
+          <div className="col-xs-3" key={product.id}>
             <div className="pic1-row1">
-              <img src={imageUrl} alt=""  />
+              <a href={"#detail/" + product.id}><img src={imageUrl} alt=""  /></a>
             </div>
             <h5>{product.get('name')}</h5>
             <span>${product.get('price')}</span>

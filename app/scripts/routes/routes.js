@@ -24,7 +24,7 @@ var Router = Backbone.Router.extend({
     'addproduct':'productAddEdit', //form view
     'product/:id/': 'productAddEdit', // product edit
     'gallery':'galleryscreen',
-    'detail':'detailscreen',
+    'detail/:id':'detailscreen',
     'bio': 'bioscreen',
     'cart': 'cartscreen'
   },
@@ -83,11 +83,12 @@ var Router = Backbone.Router.extend({
       appContainer
     );
   },
-  detailscreen: function(){
+  detailscreen: function(id){
+    var self = this;
     ReactDOM.unmountComponentAtNode(appContainer);
 
     ReactDOM.render(
-      React.createElement(DetailPageComponent),
+      React.createElement(DetailPageComponent, {router: self, productId: id}),
       appContainer
     );
   },
