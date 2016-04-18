@@ -6110,20 +6110,18 @@ footer {
   text-decoration: none;
   color: black; }
 
-.pic1-row1 {
-  border: 1px solid black;
-  height: 250px;
+.gallery-row {
+  margin-top: 70px;
+  margin-bottom: 100px; }
+
+.gallery-image {
+  height: 220px;
+  width: 220px;
   border-radius: 5px; }
 
-.pic2-row1 {
-  border: 1px solid black;
-  height: 250px;
-  border-radius: 5px; }
-
-.pic3-row1 {
-  border: 1px solid black;
-  height: 250px;
-  border-radius: 5px; }
+.detail-row {
+  margin-top: 70px;
+  margin-bottom: 100px; }
 
 .detail-img {
   height: 350px;
@@ -6200,7 +6198,7 @@ footer {
     font-size: 18px; }
 
 .emily-area {
-  margin-bottom: 100px;
+  margin-bottom: 135px;
   margin-top: 100px; }
   .emily-area img {
     height: 400px;
@@ -6209,22 +6207,32 @@ footer {
     border-radius: 5px; }
 
 .heading-page {
-  height: 200px;
+  height: 100px;
   color: #000;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  background-color: #eee; }
   .heading-page a {
     text-decoration: none;
     color: #000; }
 
-.cart-main-nav {
+.heading-main-nav {
   display: inline-block;
   margin: 35px; }
-  .cart-main-nav li {
+  .heading-main-nav li {
     display: inline-block;
     margin: 5px; }
-    .cart-main-nav li a {
+    .heading-main-nav li a {
       text-decoration: none;
       color: #000; }
+
+.heading-cart-nav {
+  float: right;
+  margin: 35px;
+  margin-right: 50px; }
+  .heading-cart-nav li {
+    list-style: none;
+    display: inline-block;
+    margin: 5px; }
 
 .shopping-cart {
   margin-left: 35px;
@@ -6232,5 +6240,9 @@ footer {
 
 h3 {
   font-size: 36px; }
+
+.thumbnail-images {
+  height: 30px;
+  width: 30px; }
 
 /*# sourceMappingURL=app.css.map */

@@ -44,6 +44,8 @@ var CreateProductsComponent = React.createClass({
       <div className="createproductspage">
         <HeadingComponent/>
         <h3>Products</h3>
+        <a href="#orders" className="add-button">Orders</a>
+        
         <a href="#addproduct" className="add-button">Add</a>
           <table className="table">
             <thead>

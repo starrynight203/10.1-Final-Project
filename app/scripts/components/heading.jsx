@@ -10,13 +10,13 @@ var HeadingComponent = React.createClass({
     return(
       <div className="row heading-page">
         <div className="col-xs-12">
-          <ul className="cart-main-nav">
+          <ul className="heading-main-nav">
             <li><a href="#">Home</a></li>
             <li><a href="#bio">Our Story</a></li>
             <li><a href="#gallery">Shop</a></li>
           </ul>
 
-          <ul className="cart-nav">
+          <ul className="heading-cart-nav">
             <li><a href="#cart">Cart</a></li>
           </ul>
         </div>

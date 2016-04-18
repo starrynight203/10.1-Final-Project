@@ -21,18 +21,26 @@ var AddProductComponent = React.createClass({
     query.get(self.props.productId, {
       success: function(product){
         self.setState({
+          'product': product,
           name: product.get('name'),
           price: product.get('price'),
-          description: product.get('description')
+          description: product.get('description'),
+          images: product.get('images')
         });
       }
     });
   },
 
-  handleFile: function(e) {
+  handleFile: function(i, e) {
     var file = e.target.files[0];
     var images = this.state.images;
-    images.push(new Parse.File(file.name, file));
+
+    if(!i){
+      images.push(new Parse.File(file.name, file));
+    }else{
+      images[i] = new Parse.File(file.name, file);
+    }
+
     this.setState({'images': images});
   },
 
@@ -45,27 +53,73 @@ var AddProductComponent = React.createClass({
       return image;
     });
 
-    var product = new model.Product({id: self.props.productId});
-    product.set({
-      'name': self.state.name,
-      'description': self.state.description,
-      'price': Number(self.state.price),
-      'images': parseImages
-    });
+    var imagesComplete = Promise.all(parseImages);
+    imagesComplete.then(function(){
+      var product = new model.Product({id: self.props.productId});
+      product.set({
+        'name': self.state.name,
+        'description': self.state.description,
+        'price': Number(self.state.price),
+        'images': parseImages
+      });
 
-    product.save(null, {
-      success: function(product) {
-        alert('New product created');
-        Backbone.history.navigate('createproduct', {trigger: true});
-      },
-      error: function(error) {
-            console.log(error);
-          }
+      product.save(null, {
+        success: function(product) {
+          alert('New product created');
+          Backbone.history.navigate('createproduct', {trigger: true});
+        },
+        error: function(error) {
+              console.log(error);
+            }
+      });
     });
     // Backbone.history.navigate('gallery', {trigger: true});
   },
+  buildUploadInputs: function(){
+    var self = this;
+    var images = self.state.product ? self.state.product.get("images") : [];
 
+    var pictureInputs = (Array.apply(null, new Array(10))).map(function(val, i){
+      var fileInput;
+      var num = i+1;
+
+      console.log(images.length);
+      console.log(num);
+
+      // if the image is on parse, display edit input
+      if (images.length > num){
+        fileInput = (
+          <span>
+          <img src={images[i].url()} className="thumbnail-images"/>
+          <input type="file" onChange={self.handleFile.bind(self, num)} className="btn btn-default add-button "/>
+          </span>
+        );
+
+      // no image on parse, display add input
+      } else {
+        fileInput = (<input type="file" onChange={self.handleFile.bind(self, false)} className="btn btn-default add-button"/>);
+      }
+
+      return(
+        <div className="row" key={i}>
+          <div className="col-xs-12">
+            <div className="form-group">
+              <label htmlFor="exampleInputName2">Image #{i + 1}</label>
+
+              {fileInput}
+
+            </div>
+          </div>
+        </div>
+      );
+    });
+
+    return pictureInputs;
+  },
   render: function(){
+    var self = this;
+    var pictureInputs = self.buildUploadInputs();
+
     return(
       <form encType="multipart/form-data">
       <div className="addproductpage">
@@ -94,14 +148,9 @@ var AddProductComponent = React.createClass({
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-xs-12">
-            <div className="form-group">
-              <label htmlFor="exampleInputName2">Image</label>
-              <input type="file" onChange={this.handleFile} className="btn btn-default add-button"/>
-            </div>
-          </div>
-        </div>
+
+        {pictureInputs}
+
         <button type="button" onClick={this.handleSubmit} type="submit" className="btn btn-default add-button">Submit</button>
       </div>
     </form>
