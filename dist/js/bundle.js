@@ -50,8 +50,11 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
     e.preventDefault();
     var self = this;
     var router = this.props.router;
+    console.log(this.state.images);
     var parseImages = this.state.images.map(function(image){
+      console.log(image);
       image.save();
+      console.log('saved');
       return image;
     });
 
@@ -85,8 +88,8 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
       var fileInput;
       var num = i+1;
 
-      console.log(images.length);
-      console.log(num);
+      console.log('length', images.length);
+      console.log('num', num);
 
       // if the image is on parse, display edit input
       if (images.length > num){
@@ -117,6 +120,24 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
     });
 
     return pictureInputs;
+  },
+  handleRemove:function(){
+    // object is set to objectId of item clicked on
+    var object = this.props.productId;
+    // collection refers to the parse class
+    var collection = Parse.Object.extend("Product");
+    // query is equal to the entire table in parse
+    var query = new Parse.Query(collection);
+    // find the item (using model as a search parameter for)
+    query.get(object, {
+      success: function(object){
+        object.destroy({});
+        console.log('model destroyed');
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    })
   },
   render: function(){
     var self = this;
@@ -152,7 +173,7 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
         ), 
 
         pictureInputs, 
-
+        React.createElement("button", {onClick: this.handleRemove, className: "btn btn-primary remove"}, "Delete"), 
         React.createElement("button", {type: "button", onClick: this.handleSubmit, type: "submit", className: "btn btn-default add-button"}, "Submit")
       )
     )
@@ -363,7 +384,8 @@ var CartComponent = React.createClass({displayName: "CartComponent",
               React.createElement("td", null, product.get('name')), 
               React.createElement("td", null, Cart.get('size')), 
               React.createElement("td", null, Cart.get('qty')), 
-              React.createElement("td", null, product.get('price'))
+              React.createElement("td", null, product.get('price')), 
+              React.createElement("td", null, React.createElement("i", {className: "fa fa-times", "aria-hidden": "true"}))
             )
           );
       });
@@ -446,7 +468,7 @@ var CreateProductsComponent = React.createClass({displayName: "CreateProductsCom
         React.createElement(HeadingComponent, null), 
         React.createElement("h3", null, "Products"), 
         React.createElement("a", {href: "#orders", className: "add-button"}, "Orders"), 
-        
+
         React.createElement("a", {href: "#addproduct", className: "add-button"}, "Add"), 
           React.createElement("table", {className: "table"}, 
             React.createElement("thead", null, 

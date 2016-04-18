@@ -42,6 +42,7 @@ var CartComponent = React.createClass({
               <td>{Cart.get('size')}</td>
               <td>{Cart.get('qty')}</td>
               <td>{product.get('price')}</td>
+              <td><i className="fa fa-times" aria-hidden="true"></i></td>
             </tr>
           );
       });

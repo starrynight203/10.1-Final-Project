@@ -48,8 +48,11 @@ var AddProductComponent = React.createClass({
     e.preventDefault();
     var self = this;
     var router = this.props.router;
+    console.log(this.state.images);
     var parseImages = this.state.images.map(function(image){
+      console.log(image);
       image.save();
+      console.log('saved');
       return image;
     });
 
@@ -83,8 +86,8 @@ var AddProductComponent = React.createClass({
       var fileInput;
       var num = i+1;
 
-      console.log(images.length);
-      console.log(num);
+      console.log('length', images.length);
+      console.log('num', num);
 
       // if the image is on parse, display edit input
       if (images.length > num){
@@ -115,6 +118,24 @@ var AddProductComponent = React.createClass({
     });
 
     return pictureInputs;
+  },
+  handleRemove:function(){
+    // object is set to objectId of item clicked on
+    var object = this.props.productId;
+    // collection refers to the parse class
+    var collection = Parse.Object.extend("Product");
+    // query is equal to the entire table in parse
+    var query = new Parse.Query(collection);
+    // find the item (using model as a search parameter for)
+    query.get(object, {
+      success: function(object){
+        object.destroy({});
+        console.log('model destroyed');
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    })
   },
   render: function(){
     var self = this;
@@ -150,7 +171,7 @@ var AddProductComponent = React.createClass({
         </div>
 
         {pictureInputs}
-
+        <button onClick={this.handleRemove} className="btn btn-primary remove">Delete</button>
         <button type="button" onClick={this.handleSubmit} type="submit" className="btn btn-default add-button">Submit</button>
       </div>
     </form>
