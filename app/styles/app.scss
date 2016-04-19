@@ -27,8 +27,10 @@ body {
 }
 
 .container-fluid {
-  background:
-  url('https://images.unsplash.com/photo-1450297166380-cabe503887e5?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=c62232978a807ac821c158c9a15b8b79') center center;
+  // background:
+  // url('https://images.unsplash.com/photo-1450297166380-cabe503887e5?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=c62232978a807ac821c158c9a15b8b79') center center;
+  background-image: url('../images/lindsay.jpg');
+  opacity: 0.8;
   -webkit-background-size: cover;
   background-size: cover;
   height: 705px;
@@ -485,8 +487,11 @@ footer {
 
 /////// Our Story Page ///////
 .bio-page {
-  background:
-  url('https://images.unsplash.com/photo-1450297085576-21d98821f1fb?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=f32a6df98803b0d3d0dc076804a98a4c') center center;
+  // background:
+  // url('https://images.unsplash.com/photo-1450297085576-21d98821f1fb?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=f32a6df98803b0d3d0dc076804a98a4c') center center;
+  background-image: url('../images/multiple.jpg');
+  background-position: 25%;
+  opacity: 0.9;
   -webkit-background-size: cover;
   background-size: cover;
   height: 450px;

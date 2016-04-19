@@ -1,6 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 var React = require('react');
+var _ = require('underscore');
 var ReactDOM = require('react-dom');
 var LinkedStateMixin = require('react/lib/LinkedStateMixin');
 var $ = require('jquery');
@@ -33,93 +34,96 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
     });
   },
 
-  handleFile: function(i, e) {
+  handleFile: function(e) {
+    var self = this;
     var file = e.target.files[0];
+
     var images = this.state.images;
+    var newImage = new Parse.File(file.name, file);
+    newImage.save().then(function(file){
+      images.push(file);
+      if (self.state.product){
+        self.state.product.set("images", images);
+        self.state.product.save();
+      }
+      self.setState({'images': images});
+    });
 
-    if(!i){
-      images.push(new Parse.File(file.name, file));
-    }else{
-      images[i] = new Parse.File(file.name, file);
-    }
-
-    this.setState({'images': images});
   },
 
   handleSubmit: function(e){
     e.preventDefault();
     var self = this;
     var router = this.props.router;
-    console.log(this.state.images);
-    var parseImages = this.state.images.map(function(image){
-      console.log(image);
-      image.save();
-      console.log('saved');
-      return image;
+    var product = new model.Product({id: self.props.productId});
+    product.set({
+      'name': self.state.name,
+      'description': self.state.description,
+      'images': self.state.images,
+      'price': Number(self.state.price)
     });
 
-    var imagesComplete = Promise.all(parseImages);
-    imagesComplete.then(function(){
-      var product = new model.Product({id: self.props.productId});
-      product.set({
-        'name': self.state.name,
-        'description': self.state.description,
-        'price': Number(self.state.price),
-        'images': parseImages
-      });
-
-      product.save(null, {
-        success: function(product) {
-          alert('New product created');
-          Backbone.history.navigate('createproduct', {trigger: true});
-        },
-        error: function(error) {
-              console.log(error);
-            }
-      });
+    product.save(null, {
+      success: function(product) {
+        alert('New product created');
+        Backbone.history.navigate('createproduct', {trigger: true});
+      },
+      error: function(error) {
+        console.log(error);
+      }
     });
-    // Backbone.history.navigate('gallery', {trigger: true});
+  },
+  deleteImage: function(image, e){
+    var self = this;
+    e.preventDefault();
+    var newImages = _.without(this.state.images, _.findWhere(this.state.images, {_name: image.name()}));
+    console.log(newImages);
+    var query = new Parse.Query('Product');
+    query.get(this.props.productId, {
+      success: function(product){
+        product.set('images', newImages);
+        product.save().then(function(){
+          self.setState({"images": newImages});
+        });
+      }
+    });
   },
   buildUploadInputs: function(){
     var self = this;
-    var images = self.state.product ? self.state.product.get("images") : [];
+    var images = self.state.product ? self.state.product.get("images") : self.state.images || [];
 
-    var pictureInputs = (Array.apply(null, new Array(10))).map(function(val, i){
-      var fileInput;
-      var num = i+1;
+    var pictureInputs = images.map(function(image, index) {
+      var fileInput = (
+        React.createElement("span", null, 
+          React.createElement("img", {src: image.url(), className: "thumbnail-images"}), 
+          React.createElement("div", null, image.name()), 
+          React.createElement("div", {onClick: self.deleteImage.bind(self, image)}, "X")
+        )
+      )
 
-      console.log('length', images.length);
-      console.log('num', num);
-
-      // if the image is on parse, display edit input
-      if (images.length > num){
-        fileInput = (
-          React.createElement("span", null, 
-          React.createElement("img", {src: images[i].url(), className: "thumbnail-images"}), 
-          React.createElement("input", {type: "file", onChange: self.handleFile.bind(self, num), className: "btn btn-default add-button "})
-          )
-        );
-
-      // no image on parse, display add input
-      } else {
-        fileInput = (React.createElement("input", {type: "file", onChange: self.handleFile.bind(self, false), className: "btn btn-default add-button"}));
-      }
-
-      return(
-        React.createElement("div", {className: "row", key: i}, 
+      return (
+        React.createElement("div", {className: "row", key: index}, 
           React.createElement("div", {className: "col-xs-12"}, 
             React.createElement("div", {className: "form-group"}, 
-              React.createElement("label", {htmlFor: "exampleInputName2"}, "Image #", i + 1), 
-
-              fileInput
-
+                fileInput
             )
           )
         )
       );
     });
 
-    return pictureInputs;
+    return (
+      React.createElement("div", null, 
+      React.createElement("div", {className: "row"}, 
+        React.createElement("div", {className: "col-xs-12"}, 
+          React.createElement("div", {className: "form-group"}, 
+            React.createElement("input", {type: "file", onChange: this.handleFile, className: "btn btn-default add-button"})
+          )
+        )
+      ), 
+      pictureInputs
+      )
+    );
   },
   handleRemove:function(){
     // object is set to objectId of item clicked on
@@ -142,7 +146,7 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
   render: function(){
     var self = this;
     var pictureInputs = self.buildUploadInputs();
-
+    console.log("RENDER FIRED!")
     return(
       React.createElement("form", {encType: "multipart/form-data"}, 
       React.createElement("div", {className: "addproductpage"}, 
@@ -183,7 +187,7 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
 
 module.exports = AddProductComponent;
 
-},{"../models/models":13,"backbone":31,"jquery":130,"parse":131,"react":306,"react-dom":174,"react/lib/LinkedStateMixin":195}],2:[function(require,module,exports){
+},{"../models/models":13,"backbone":31,"jquery":130,"parse":131,"react":306,"react-dom":174,"react/lib/LinkedStateMixin":195,"underscore":307}],2:[function(require,module,exports){
 "use strict";
 var React = require('react');
 var ReactDOM = require('react-dom');
