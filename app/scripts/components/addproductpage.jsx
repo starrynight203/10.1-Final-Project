@@ -1,4 +1,5 @@
 var React = require('react');
+var _ = require('underscore');
 var ReactDOM = require('react-dom');
 var LinkedStateMixin = require('react/lib/LinkedStateMixin');
 var $ = require('jquery');
@@ -31,30 +32,30 @@ var AddProductComponent = React.createClass({
     });
   },
 
-  handleFile: function(i, e) {
+  handleFile: function(e) {
+    var self = this;
     var file = e.target.files[0];
     var images = this.state.images;
-
-    if(!i){
-      images.push(new Parse.File(file.name, file));
-    }else{
-      images[i] = new Parse.File(file.name, file);
-    }
-
-    this.setState({'images': images});
+    var newImage = new Parse.File(file.name, file);
+    newImage.save().then(function(file){
+      images.push(file);
+      self.state.product.set("images", images);
+      self.state.product.save();
+      self.setState({'images': images});
+    });
   },
 
   handleSubmit: function(e){
     e.preventDefault();
     var self = this;
     var router = this.props.router;
+    /*
     console.log(this.state.images);
     var parseImages = this.state.images.map(function(image){
-      console.log(image);
-      image.save();
-      console.log('saved');
-      return image;
+      return image.save();
     });
+
+    console.log(parseImages)
 
     var imagesComplete = Promise.all(parseImages);
     imagesComplete.then(function(){
@@ -75,49 +76,64 @@ var AddProductComponent = React.createClass({
               console.log(error);
             }
       });
+
     });
+    */
     // Backbone.history.navigate('gallery', {trigger: true});
+  },
+  deleteImage: function(image, e){
+    var self = this;
+    e.preventDefault();
+    console.log(this.state.images);
+    var newImages = _.without(this.state.images, _.findWhere(this.state.images, {_name: image.name()}));
+    console.log(newImages);
+    var query = new Parse.Query('Product');
+    query.get(this.props.productId, {
+      success: function(product){
+        product.set('images', newImages);
+        product.save().then(function(){
+          self.setState({"images": newImages});
+        });
+      }
+    });
+
   },
   buildUploadInputs: function(){
     var self = this;
     var images = self.state.product ? self.state.product.get("images") : [];
 
-    var pictureInputs = (Array.apply(null, new Array(10))).map(function(val, i){
-      var fileInput;
-      var num = i+1;
+    var pictureInputz = images.map(function(image, index) {
+      var fileInput = (
+        <span>
+          <img src={image.url()} className="thumbnail-images" />
+          <div>{image.name()}</div>
+          <div onClick={self.deleteImage.bind(self, image)}>X</div>
+        </span>
+      )
 
-      console.log('length', images.length);
-      console.log('num', num);
-
-      // if the image is on parse, display edit input
-      if (images.length > num){
-        fileInput = (
-          <span>
-          <img src={images[i].url()} className="thumbnail-images"/>
-          <input type="file" onChange={self.handleFile.bind(self, num)} className="btn btn-default add-button "/>
-          </span>
-        );
-
-      // no image on parse, display add input
-      } else {
-        fileInput = (<input type="file" onChange={self.handleFile.bind(self, false)} className="btn btn-default add-button"/>);
-      }
-
-      return(
-        <div className="row" key={i}>
+      return (
+        <div className="row" key={index}>
           <div className="col-xs-12">
             <div className="form-group">
-              <label htmlFor="exampleInputName2">Image #{i + 1}</label>
-
-              {fileInput}
-
+                {fileInput}
             </div>
           </div>
         </div>
       );
     });
 
-    return pictureInputs;
+    return (
+      <div>
+      <div className="row">
+        <div className="col-xs-12">
+          <div className="form-group">
+            <input type="file" onChange={this.handleFile} className="btn btn-default add-button"/>
+          </div>
+        </div>
+      </div>
+      {pictureInputz}
+      </div>
+    );
   },
   handleRemove:function(){
     // object is set to objectId of item clicked on
