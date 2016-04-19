@@ -35,56 +35,45 @@ var AddProductComponent = React.createClass({
   handleFile: function(e) {
     var self = this;
     var file = e.target.files[0];
+
     var images = this.state.images;
     var newImage = new Parse.File(file.name, file);
     newImage.save().then(function(file){
       images.push(file);
-      self.state.product.set("images", images);
-      self.state.product.save();
+      if (self.state.product){
+        self.state.product.set("images", images);
+        self.state.product.save();
+      }
       self.setState({'images': images});
     });
+
   },
 
   handleSubmit: function(e){
     e.preventDefault();
     var self = this;
     var router = this.props.router;
-    /*
-    console.log(this.state.images);
-    var parseImages = this.state.images.map(function(image){
-      return image.save();
+    var product = new model.Product({id: self.props.productId});
+    product.set({
+      'name': self.state.name,
+      'description': self.state.description,
+      'images': self.state.images,
+      'price': Number(self.state.price)
     });
 
-    console.log(parseImages)
-
-    var imagesComplete = Promise.all(parseImages);
-    imagesComplete.then(function(){
-      var product = new model.Product({id: self.props.productId});
-      product.set({
-        'name': self.state.name,
-        'description': self.state.description,
-        'price': Number(self.state.price),
-        'images': parseImages
-      });
-
-      product.save(null, {
-        success: function(product) {
-          alert('New product created');
-          Backbone.history.navigate('createproduct', {trigger: true});
-        },
-        error: function(error) {
-              console.log(error);
-            }
-      });
-
+    product.save(null, {
+      success: function(product) {
+        alert('New product created');
+        Backbone.history.navigate('createproduct', {trigger: true});
+      },
+      error: function(error) {
+        console.log(error);
+      }
     });
-    */
-    // Backbone.history.navigate('gallery', {trigger: true});
   },
   deleteImage: function(image, e){
     var self = this;
     e.preventDefault();
-    console.log(this.state.images);
     var newImages = _.without(this.state.images, _.findWhere(this.state.images, {_name: image.name()}));
     console.log(newImages);
     var query = new Parse.Query('Product');
@@ -96,13 +85,12 @@ var AddProductComponent = React.createClass({
         });
       }
     });
-
   },
   buildUploadInputs: function(){
     var self = this;
-    var images = self.state.product ? self.state.product.get("images") : [];
+    var images = self.state.product ? self.state.product.get("images") : self.state.images || [];
 
-    var pictureInputz = images.map(function(image, index) {
+    var pictureInputs = images.map(function(image, index) {
       var fileInput = (
         <span>
           <img src={image.url()} className="thumbnail-images" />
@@ -131,7 +119,7 @@ var AddProductComponent = React.createClass({
           </div>
         </div>
       </div>
-      {pictureInputz}
+      {pictureInputs}
       </div>
     );
   },
@@ -156,7 +144,7 @@ var AddProductComponent = React.createClass({
   render: function(){
     var self = this;
     var pictureInputs = self.buildUploadInputs();
-
+    console.log("RENDER FIRED!")
     return(
       <form encType="multipart/form-data">
       <div className="addproductpage">
