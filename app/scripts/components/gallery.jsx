@@ -32,12 +32,12 @@ var GalleryComponent = React.createClass({
 
 
         return (
-          <div className="col-xs-3" key={product.id}>
+          <div className="col-xs-4" key={product.id}>
             <div className="pic1-row1">
               <a href={"#detail/" + product.id}><img src={imageUrl} alt="" className="gallery-image"  /></a>
             </div>
             <h5>{product.get('name')}</h5>
-            <span>${product.get('price')}</span>
+            <span id="gallery-price">${product.get('price')}</span>
           </div>
         );
       });
@@ -46,16 +46,8 @@ var GalleryComponent = React.createClass({
         <HeadingComponent/>
 
         <div className="row gallery-row">
-          <div className="col-xs-2 side-nav">
-            <ul className="list-names">
-              <li className="elle"><a href="#">Elle</a></li>
-              <li><a href="#">Emily</a></li>
-              <li><a href="#">Faye</a></li>
-              <li><a href="#">Noelle</a></li>
-              <li><a href="#">Custom</a></li>
-            </ul>
-          </div>
-          <div className="col-xs-10">
+
+          <div className="col-xs-12 picture-rows">
             {galleryRows}
           </div>
         </div>

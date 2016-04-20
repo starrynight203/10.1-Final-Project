@@ -135,6 +135,7 @@ var AddProductComponent = React.createClass({
       success: function(object){
         object.destroy({});
         console.log('model destroyed');
+        Backbone.history.navigate('createproduct', {trigger: true});
       },
       error: function(error) {
         console.log(error);
@@ -148,7 +149,7 @@ var AddProductComponent = React.createClass({
     return(
       <form encType="multipart/form-data">
       <div className="addproductpage">
-        <h3>Add Product</h3>
+        <h3>Add/Edit Product</h3>
         <div className="row">
           <div className="col-xs-12">
             <div className="form-group">

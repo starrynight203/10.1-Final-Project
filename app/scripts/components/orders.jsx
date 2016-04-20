@@ -18,8 +18,10 @@ var OrdersComponent = React.createClass({
           <thead>
             <tr>
               <td>Name</td>
-              <td>Price</td>
+              <td>Size</td>
               <td>Quantity</td>
+              <td>Wire</td>
+              <td>Bead</td>
             </tr>
           </thead>
           <tbody>

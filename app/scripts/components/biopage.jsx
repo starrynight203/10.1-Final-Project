@@ -13,7 +13,7 @@ var BioPageComponent = React.createClass({
             <ul className="bio-main-nav">
               <li><a href="#">Home</a></li>
               <li><a href="#">Our Story</a></li>
-              <li><a href="#">Shop</a></li>
+              <li><a href="#gallery">Shop</a></li>
             </ul>
 
             <ul className="cart-nav">

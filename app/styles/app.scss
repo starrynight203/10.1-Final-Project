@@ -29,7 +29,7 @@ body {
 .container-fluid {
   // background:
   // url('https://images.unsplash.com/photo-1450297166380-cabe503887e5?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=c62232978a807ac821c158c9a15b8b79') center center;
-  background-image: url('../images/lindsay.jpg');
+  background-image: url('../images/header3.jpg');
   opacity: 0.8;
   -webkit-background-size: cover;
   background-size: cover;
@@ -414,9 +414,26 @@ footer {
 }
 
 .gallery-image {
-  height: 220px;
-  width: 220px;
-  border-radius: 5px;
+
+}
+
+.picture-rows {
+  padding-left: 50px;
+  padding-right: 50px;
+  img {
+    height: 279px;
+    width: 373px;
+    border-radius: 5px;
+  }
+}
+
+#gallery-price {
+  float: right;
+  margin-top: 8px;
+}
+
+h5 {
+  display: inline-block;
 }
 
 // .pic1-row1 {
@@ -485,21 +502,29 @@ footer {
   font-size: 16px;
 }
 
+.detail-thumbnail {
+  margin-left: 100px;
+  margin-top: 12px;
+  img {
+    margin-right: 6px;
+    border-radius: 3px;
+  }
+}
 /////// Our Story Page ///////
 .bio-page {
   // background:
   // url('https://images.unsplash.com/photo-1450297085576-21d98821f1fb?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=f32a6df98803b0d3d0dc076804a98a4c') center center;
   background-image: url('../images/multiple.jpg');
-  background-position: 25%;
-  opacity: 0.9;
+  background-position: 30% 22%;
+  opacity: 0.8;
   -webkit-background-size: cover;
   background-size: cover;
-  height: 450px;
+  height: 500px;
   color: #fff;
   text-transform: uppercase;
   a {
     text-decoration: none;
-    color: #fff;
+    color: #000;
   }
 }
 
@@ -598,4 +623,10 @@ h3 {
 .thumbnail-images {
   height: 30px;
   width: 30px;
+}
+
+.remove {
+  color: #000;
+  background-color: #fff;
+  border-color: #000;
 }
