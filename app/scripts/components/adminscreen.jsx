@@ -16,7 +16,7 @@ var AdminScreenComponent = React.createClass({
             <a href="#createproduct"  className="products-button">Products</a>
           </div>
           <div className="col-xs-6">
-            <a href="#" className="orders-button">Orders</a>
+            <a href="#orders" className="orders-button">Orders</a>
           </div>
         </div>
       </div>

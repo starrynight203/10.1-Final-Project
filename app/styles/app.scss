@@ -27,8 +27,10 @@ body {
 }
 
 .container-fluid {
-  background:
-  url('https://images.unsplash.com/photo-1450297166380-cabe503887e5?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=c62232978a807ac821c158c9a15b8b79') center center;
+  // background:
+  // url('https://images.unsplash.com/photo-1450297166380-cabe503887e5?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=c62232978a807ac821c158c9a15b8b79') center center;
+  background-image: url('../images/Header.jpg');
+  opacity: 0.9;
   -webkit-background-size: cover;
   background-size: cover;
   height: 705px;
@@ -169,7 +171,12 @@ body {
     border-bottom: 6px solid #fff;
     border-right: 3px solid #fff;
     border-left: 3px solid #fff;
+    opacity: 0.9;
   }
+}
+
+.linds {
+  opacity: 0.9;
 }
 
 .picbox4 {
@@ -180,6 +187,7 @@ body {
     border-bottom: 6px solid #fff;
     border-right: 3px solid #fff;
     border-left: 3px solid #fff;
+    opacity: 0.9;
   }
 }
 
@@ -196,6 +204,7 @@ body {
 
 .slide1 {
   height: 400px;
+
 }
 
 .slide2 {
@@ -257,6 +266,7 @@ footer {
   }
   h3 {
     font-size: 22px;
+    margin: 0;
   }
 }
 
@@ -264,14 +274,14 @@ footer {
 ////////// Sign in page ////////
 .background {
   // background: url('https://images.unsplash.com/photo-1446071103084-c257b5f70672?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=21cf7e2e461fa5c32c6bc99ecd38c754') center center;
-  background-color: #e2dada;
+  background-color: #eee;
   -webkit-background-size: cover;
   background-size: cover;
 }
 
 .logout-button {
   padding: 15px;
-  border: 2px solid black;
+  border: 2px solid gray;
   border-radius: 5px;
   float: right;
   margin: 10px;
@@ -292,7 +302,7 @@ footer {
 .signup {
   display: inline-block;
   padding: 15px;
-  border: 2px solid black;
+  border: 1px solid gray;
   border-radius: 5px;
   margin: 5px;
   // margin-left: 25%;
@@ -302,7 +312,7 @@ footer {
 .signin {
   display: inline-block;
   padding: 15px;
-  border: 2px solid black;
+  border: 1px solid gray;
   border-radius: 5px;
   margin: 5px;
   // margin-left: 25%;
@@ -406,25 +416,58 @@ footer {
   }
 }
 
-.pic1-row1 {
-  border: 1px solid black;
-  height: 250px;
-  border-radius: 5px;
+.gallery-row {
+  margin-top: 70px;
+  margin-bottom: 100px;
 }
 
-.pic2-row1 {
-  border: 1px solid black;
-  height: 250px;
-  border-radius: 5px;
+.gallery-image {
+
 }
 
-.pic3-row1 {
-  border: 1px solid black;
-  height: 250px;
-  border-radius: 5px;
+.picture-rows {
+  padding-left: 50px;
+  padding-right: 50px;
+  img {
+    height: 279px;
+    width: 373px;
+    border-radius: 5px;
+  }
 }
+
+#gallery-price {
+  float: right;
+  margin-top: 8px;
+}
+
+h5 {
+  display: inline-block;
+}
+
+// .pic1-row1 {
+//   border: 1px solid black;
+//   height: 250px;
+//   border-radius: 5px;
+// }
+//
+// .pic2-row1 {
+//   border: 1px solid black;
+//   height: 250px;
+//   border-radius: 5px;
+// }
+//
+// .pic3-row1 {
+//   border: 1px solid black;
+//   height: 250px;
+//   border-radius: 5px;
+// }
 
 /////// Detail Page ////////
+.detail-row {
+  margin-top: 70px;
+  margin-bottom: 100px;
+}
+
 .detail-img {
   height: 350px;
   width: 400px;
@@ -467,18 +510,29 @@ footer {
   font-size: 16px;
 }
 
+.detail-thumbnail {
+  margin-left: 100px;
+  margin-top: 12px;
+  img {
+    margin-right: 6px;
+    border-radius: 3px;
+  }
+}
 /////// Our Story Page ///////
 .bio-page {
-  background:
-  url('https://images.unsplash.com/photo-1450297085576-21d98821f1fb?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=f32a6df98803b0d3d0dc076804a98a4c') center center;
+  // background:
+  // url('https://images.unsplash.com/photo-1450297085576-21d98821f1fb?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=f32a6df98803b0d3d0dc076804a98a4c') center center;
+  background-image: url('../images/multiple.jpg');
+  background-position: 30% 22%;
+  opacity: 0.8;
   -webkit-background-size: cover;
   background-size: cover;
-  height: 450px;
+  height: 500px;
   color: #fff;
   text-transform: uppercase;
   a {
     text-decoration: none;
-    color: #fff;
+    color: #000;
   }
 }
 
@@ -518,7 +572,7 @@ footer {
 }
 
 .emily-area {
-  margin-bottom: 100px;
+  margin-bottom: 135px;
   margin-top: 100px;
   img {
     height: 400px;
@@ -528,17 +582,18 @@ footer {
   }
 }
 
-////// cart page //////
+////// heading page //////
 .heading-page {
-  height: 200px;
+  height: 100px;
   color: #000;
   text-transform: uppercase;
+  background-color: #eee;
   a {
     text-decoration: none;
     color: #000;
   }
 }
-.cart-main-nav {
+.heading-main-nav {
   display: inline-block;
   margin: 35px;
   li {
@@ -551,6 +606,19 @@ footer {
   }
 }
 
+.heading-cart-nav {
+  float: right;
+  margin: 35px;
+  margin-right: 50px;
+  li {
+    list-style: none;
+    display: inline-block;
+    margin: 5px;
+  }
+}
+
+/////// cart page ///////
+
 .shopping-cart {
   margin-left: 35px;
   margin-right: 35px;
@@ -558,4 +626,82 @@ footer {
 
 h3 {
   font-size: 36px;
+}
+
+.thumbnail-images {
+  height: 30px;
+  width: 30px;
+}
+
+.remove {
+  color: #000;
+  background-color: #fff;
+  border-color: #000;
+}
+
+///// contact //////
+h3 {
+  color: #000;
+  font-size: 32px;
+  margin-left: 40px;
+  margin-top: 50px;
+}
+
+.contact {
+  font-size: 22px;
+  color: #777;
+
+  li {
+    padding-bottom: 20px;
+  }
+  i {
+    margin-right: 7px;
+  }
+}
+
+.contact-page {
+  // background:
+  // url('https://images.unsplash.com/photo-1450297085576-21d98821f1fb?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=f32a6df98803b0d3d0dc076804a98a4c') center center;
+  background-image: url('../images/contactheader.jpg');
+  background-position: 30% 22%;
+  opacity: 0.8;
+  -webkit-background-size: cover;
+  background-size: cover;
+  height: 500px;
+  color: #fff;
+  text-transform: uppercase;
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+address {
+  padding-left: 40px;
+}
+
+.contact-image {
+  img {
+    height: 360px;
+    width: 350px;
+    border-radius: 5px;
+    margin: 25px 0;
+    opacity: 0.9;
+  }
+}
+
+////// return exchange page /////
+.return-page {
+  background-image: url('../images/return.jpg');
+  background-position: 30% 22%;
+  opacity: 0.8;
+  -webkit-background-size: cover;
+  background-size: cover;
+  height: 500px;
+  color: #fff;
+  text-transform: uppercase;
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
 }

@@ -13,6 +13,9 @@ var GalleryComponent = require('./../components/gallery.jsx');
 var DetailPageComponent = require('./../components/detailpage.jsx');
 var BioPageComponent = require('./../components/biopage.jsx');
 var CartComponent = require('./../components/cart.jsx');
+var OrdersComponent = require('./../components/orders.jsx');
+var ContactComponent = require('./../components/contact.jsx');
+var ReturnExchangeComponent = require('./../components/returnsexchanges.jsx');
 
 var appContainer = document.getElementById('app');
 var Router = Backbone.Router.extend({
@@ -24,9 +27,12 @@ var Router = Backbone.Router.extend({
     'addproduct':'productAddEdit', //form view
     'product/:id/': 'productAddEdit', // product edit
     'gallery':'galleryscreen',
-    'detail':'detailscreen',
+    'detail/:id':'detailscreen',
     'bio': 'bioscreen',
-    'cart': 'cartscreen'
+    'cart': 'cartscreen',
+    'orders': 'orderscreen',
+    'contact': 'contactscreen',
+    'return': 'returnexchangescreen'
   },
   index: function(){
     ReactDOM.unmountComponentAtNode(appContainer);
@@ -83,11 +89,12 @@ var Router = Backbone.Router.extend({
       appContainer
     );
   },
-  detailscreen: function(){
+  detailscreen: function(id){
+    var self = this;
     ReactDOM.unmountComponentAtNode(appContainer);
 
     ReactDOM.render(
-      React.createElement(DetailPageComponent),
+      React.createElement(DetailPageComponent, {router: self, productId: id}),
       appContainer
     );
   },
@@ -104,6 +111,30 @@ var Router = Backbone.Router.extend({
 
     ReactDOM.render(
       React.createElement(CartComponent),
+      appContainer
+    );
+  },
+  orderscreen: function(){
+    ReactDOM.unmountComponentAtNode(appContainer);
+
+    ReactDOM.render(
+      React.createElement(OrdersComponent),
+      appContainer
+    );
+  },
+  contactscreen: function(){
+    ReactDOM.unmountComponentAtNode(appContainer);
+
+    ReactDOM.render(
+      React.createElement(ContactComponent),
+      appContainer
+    );
+  },
+  returnexchangescreen: function(){
+    ReactDOM.unmountComponentAtNode(appContainer);
+
+    ReactDOM.render(
+      React.createElement(ReturnExchangeComponent),
       appContainer
     );
   }

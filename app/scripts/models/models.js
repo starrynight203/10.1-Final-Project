@@ -22,10 +22,10 @@ var ImageCollection = Backbone.Collection.extend({
   }
 });
 
-var CartItems = Parse.Object.extend("product");
+var Cart = Parse.Object.extend("Cart");
 
 var CartCollection = Backbone.Collection.extend({
-  model: CartItems,
+  model: Cart,
   url: 'http://tiny-ring-server.herokuapp.com/',
   parse: function(data){
     return data;
@@ -38,7 +38,6 @@ module.exports = {
   "ProductCollection": ProductCollection,
   "Images": Images,
   "ImageCollection": ImageCollection,
-  "CartItems": CartItems,
+  "Cart": Cart,
   "CartCollection": CartCollection
-
 }

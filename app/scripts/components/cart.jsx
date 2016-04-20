@@ -3,35 +3,110 @@ var ReactDOM = require('react-dom');
 var $ = require('jquery');
 var _ = require('underscore');
 var HeadingComponent = require('./../components/heading.jsx');
-var CartCollection = require('../models/models.js').CartCollection;
+var Cart = require('../models/models.js').Cart;
+var model = require('../models/models');
 var Parse = require('parse');
 var Backbone = require('backbone');
 
+
 var CartComponent = React.createClass({
   getInitialState: function(){
-    return {'products': []};
+    return {
+      'cartorder': [],
+    };
   },
-  componentDidMount: function(){
+  componentWillMount: function(){
     var self = this;
-    var cart = new models.CartCollection();
-    console.log(cart);
-    cart.fetch().done(function(products){
-      console.log(products);
-      self.setState({ 'products': products});
+    var query = new Parse.Query('Cart');
+
+    query.include('product');
+
+    query.find({
+      success: function(results) {
+        console.log(results);
+        self.setState({
+          'cartorder': results,
+        });
+      },
+      error: function(error) {
+        alert("Error: " + error.code + " " + error.message);
+      }
+    })
+  },
+  // callRemove:function(item, e){
+  //   var self = this;
+  //   // object is set to objectId of item clicked on
+  //   var objectId = item.id;
+  //
+  //   // collection refers to the parse class
+  //   //var collection = Parse.Object.extend("Cart");
+  //
+  //   // query is equal to the entire table in parse
+  //   var query = new Parse.Query("Cart");
+  //   // find the item (using model as a search parameter for)
+  //   query.equalTo("objectId", objectId);
+  //   query.find({
+  //     success: function(object){
+  //       self.removeItem(object);
+  //       // Backbone.history.navigate('createproduct', {trigger: true});
+  //     },
+  //     error: function(error) {
+  //       console.log("error: ",error);
+  //     }
+  //   })
+  // },
+  removeItem: function(item, e){
+    var self = this;
+    item.destroy({
+      success: function(object) {
+        console.log(object);
+        console.log('model destroyed');
+
+        var newCartOrder = _.reject(self.state.cartorder, function(item){
+          return item.id == object.id;
+        });
+        console.log(newCartOrder);
+        self.setState({'cartorder': newCartOrder})
+        // The object was deleted from the Parse Cloud.
+      },
+      error: function(myObject, error) {
+        console.log("error for deleted: ",error);
+        // The delete failed.
+        // error is a Parse.Error with an error code and message.
+      }
     });
   },
+
   render: function(){
-    var products = this.state.products.map(function(indivCart){
-      console.log(indivCart);
-      var imgUrl= indivCart.get("images").length > 0 ? indivCart.get("images")[0].url() : '';
-      return(
-          <tr key={indivCart.id}>
-            <td>{indivCart.get('name')}</td>
-              <td>${indivCart.get('price')}</td>
-            <td className="add-image"><img src={imgUrl} /></td>
-          </tr>
-        )
-    });
+    var self = this;
+
+    if (this.state.cartorder.length > 0){
+
+      var products = this.state.cartorder.map(function(cartItem){
+
+
+        var product = cartItem.get('product');
+        var bindItem = self.removeItem.bind(self, cartItem);
+
+
+        return(
+            <tr key={cartItem.id}>
+              <td>{product.get('name')}</td>
+              <td>{cartItem.get('size')}</td>
+              <td>{cartItem.get('qty')}</td>
+              <td>{product.get('price')}</td>
+              <td><button className="btn remove" onClick={bindItem}>Delete</button></td>
+            </tr>
+          );
+      });
+    }
+    var runningTotal = 0;
+      this.state.cartorder.forEach(function(cartItem){
+          var product = cartItem.get("product")
+          runningTotal += product.get('price');
+      })
+
+
       return (
         <div className="cart-page">
           <HeadingComponent/>
@@ -42,6 +117,7 @@ var CartComponent = React.createClass({
               <thead>
                 <tr>
                   <td>Item</td>
+                  <td>Size</td>
                   <td>Quantity</td>
                   <td>Price</td>
                   <td>Edit</td>
@@ -51,6 +127,7 @@ var CartComponent = React.createClass({
                 {products}
               </tbody>
             </table>
+            <p>Total Cart Price: $ {runningTotal} </p>
           </div>
         </div>
     );

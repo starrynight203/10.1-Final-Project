@@ -25,34 +25,6 @@ var GalleryComponent = React.createClass({
     })
   },
 
-  details: function(product, e){
-    e.preventDefault();
-    var product = JSON.stringify(product);
-    localStorage.setItem('product', product);
-    console.log(localStorage.getItem('product'));
-    Backbone.history.navigate('detail', {trigger: true});
-  },
-  addToCart: function(product){
-   console.log("addToCart");
-
-   // 1. Create a new cart object
-   var cart = new CartItems({product: product.id});
-
-   // 3. Save the cart object
-   cart.save(null, {
-       success: function(results){
-         console.log(results);
-         Backbone.history.navigate('cart', {trigger: true});
-       },
-       error: function(model, err){
-         console.log(err);
-       }
-   });
-
-   // 4. Update the cart icon to show number of items in the cart
-
- },
-
   render: function(){
     var self = this;
     var galleryRows = this.state.products.map(function(product){
@@ -60,13 +32,12 @@ var GalleryComponent = React.createClass({
 
 
         return (
-          <div className="col-xs-3" key={product.id} onClick={self.details.bind(self, product)}>
+          <div className="col-xs-12 col-md-4 col-sm-6" key={product.id}>
             <div className="pic1-row1">
-              <img src={imageUrl} alt=""  />
+              <a href={"#detail/" + product.id}><img src={imageUrl} alt="" className="gallery-image"  /></a>
             </div>
             <h5>{product.get('name')}</h5>
-            <span>${product.get('price')}</span>
-            <button type='button' onClick={self.addToCart.bind(self,product)} className='btn btn-default'>Add to Cart </button>
+            <span id="gallery-price">${product.get('price')}</span>
           </div>
         );
       });
@@ -74,17 +45,9 @@ var GalleryComponent = React.createClass({
       <div className="gallerypage">
         <HeadingComponent/>
 
-        <div className="row">
-          <div className="col-xs-3 side-nav">
-            <ul className="list-names">
-              <li className="elle"><a href="#">Elle</a></li>
-              <li><a href="#">Emily</a></li>
-              <li><a href="#">Faye</a></li>
-              <li><a href="#">Noelle</a></li>
-              <li><a href="#">Custom</a></li>
-            </ul>
-          </div>
-          <div className="col-xs-9">
+        <div className="row gallery-row">
+
+          <div className="col-xs-12 picture-rows">
             {galleryRows}
           </div>
         </div>
