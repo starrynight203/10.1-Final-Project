@@ -14,6 +14,8 @@ var DetailPageComponent = require('./../components/detailpage.jsx');
 var BioPageComponent = require('./../components/biopage.jsx');
 var CartComponent = require('./../components/cart.jsx');
 var OrdersComponent = require('./../components/orders.jsx');
+var ContactComponent = require('./../components/contact.jsx');
+var ReturnExchangeComponent = require('./../components/returnsexchanges.jsx');
 
 var appContainer = document.getElementById('app');
 var Router = Backbone.Router.extend({
@@ -28,7 +30,9 @@ var Router = Backbone.Router.extend({
     'detail/:id':'detailscreen',
     'bio': 'bioscreen',
     'cart': 'cartscreen',
-    'orders': 'orderscreen'
+    'orders': 'orderscreen',
+    'contact': 'contactscreen',
+    'return': 'returnexchangescreen'
   },
   index: function(){
     ReactDOM.unmountComponentAtNode(appContainer);
@@ -115,6 +119,22 @@ var Router = Backbone.Router.extend({
 
     ReactDOM.render(
       React.createElement(OrdersComponent),
+      appContainer
+    );
+  },
+  contactscreen: function(){
+    ReactDOM.unmountComponentAtNode(appContainer);
+
+    ReactDOM.render(
+      React.createElement(ContactComponent),
+      appContainer
+    );
+  },
+  returnexchangescreen: function(){
+    ReactDOM.unmountComponentAtNode(appContainer);
+
+    ReactDOM.render(
+      React.createElement(ReturnExchangeComponent),
       appContainer
     );
   }

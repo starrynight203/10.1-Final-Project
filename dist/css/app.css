@@ -5825,8 +5825,8 @@ body {
     text-decoration: none; }
 
 .container-fluid {
-  background-image: url("../images/header3.jpg");
-  opacity: 0.8;
+  background-image: url("../images/Header.jpg");
+  opacity: 0.9;
   -webkit-background-size: cover;
   background-size: cover;
   height: 705px;
@@ -5938,7 +5938,11 @@ body {
     border-top: 3px solid #fff;
     border-bottom: 6px solid #fff;
     border-right: 3px solid #fff;
-    border-left: 3px solid #fff; }
+    border-left: 3px solid #fff;
+    opacity: 0.9; }
+
+.linds {
+  opacity: 0.9; }
 
 .picbox4 {
   padding-right: 0;
@@ -5947,7 +5951,8 @@ body {
     border-top: 3px solid #fff;
     border-bottom: 6px solid #fff;
     border-right: 3px solid #fff;
-    border-left: 3px solid #fff; }
+    border-left: 3px solid #fff;
+    opacity: 0.9; }
 
 .container {
   width: 1280px;
@@ -5960,6 +5965,8 @@ body {
 
 .slide1 {
   height: 400px; }
+  .slide1 img {
+    background-position: 30% 70%; }
 
 .slide2 {
   height: 400px; }
@@ -6004,16 +6011,17 @@ footer {
   footer li {
     list-style: none; }
   footer h3 {
-    font-size: 22px; }
+    font-size: 22px;
+    margin: 0; }
 
 .background {
-  background-color: #e2dada;
+  background-color: #eee;
   -webkit-background-size: cover;
   background-size: cover; }
 
 .logout-button {
   padding: 15px;
-  border: 2px solid black;
+  border: 2px solid gray;
   border-radius: 5px;
   float: right;
   margin: 10px;
@@ -6031,7 +6039,7 @@ footer {
 .signup {
   display: inline-block;
   padding: 15px;
-  border: 2px solid black;
+  border: 1px solid gray;
   border-radius: 5px;
   margin: 5px;
   width: 450px; }
@@ -6039,7 +6047,7 @@ footer {
 .signin {
   display: inline-block;
   padding: 15px;
-  border: 2px solid black;
+  border: 1px solid gray;
   border-radius: 5px;
   margin: 5px;
   width: 450px; }
@@ -6269,5 +6277,55 @@ h3 {
   color: #000;
   background-color: #fff;
   border-color: #000; }
+
+h3 {
+  color: #000;
+  font-size: 32px;
+  margin-left: 40px;
+  margin-top: 50px; }
+
+.contact {
+  font-size: 22px;
+  color: #777; }
+  .contact li {
+    padding-bottom: 20px; }
+  .contact i {
+    margin-right: 7px; }
+
+.contact-page {
+  background-image: url("../images/contactheader.jpg");
+  background-position: 30% 22%;
+  opacity: 0.8;
+  -webkit-background-size: cover;
+  background-size: cover;
+  height: 500px;
+  color: #fff;
+  text-transform: uppercase; }
+  .contact-page a {
+    text-decoration: none;
+    color: #fff; }
+
+address {
+  padding-left: 40px; }
+
+.contact-image img {
+  height: 360px;
+  width: 350px;
+  border-radius: 5px;
+  margin: 25px 0;
+  opacity: 0.9; }
+
+.return-page {
+  background-image: url("../images/return.jpg");
+  background-position: 30% 22%;
+  opacity: 0.8;
+  -webkit-background-size: cover;
+  background-size: cover;
+  height: 500px;
+  color: #fff;
+  text-transform: uppercase; }
+  .return-page a {
+    text-decoration: none;
+    color: #fff; }
 
 /*# sourceMappingURL=app.css.map */

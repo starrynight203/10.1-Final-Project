@@ -32,7 +32,7 @@ var GalleryComponent = React.createClass({
 
 
         return (
-          <div className="col-xs-4" key={product.id}>
+          <div className="col-xs-12 col-md-4 col-sm-6" key={product.id}>
             <div className="pic1-row1">
               <a href={"#detail/" + product.id}><img src={imageUrl} alt="" className="gallery-image"  /></a>
             </div>
