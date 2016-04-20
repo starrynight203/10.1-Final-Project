@@ -129,6 +129,17 @@ var CartComponent = React.createClass({
             </table>
             <p>Total Cart Price: $ {runningTotal} </p>
           </div>
+          <form action="" method="POST">
+            <script
+              src="https://checkout.stripe.com/checkout.js" className="stripe-button"
+              data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+              data-amount="999"
+              data-name="Stripe.com"
+              data-description="Widget"
+              data-image="/img/documentation/checkout/marketplace.png"
+              data-locale="auto">
+            </script>
+          </form>
         </div>
     );
   }

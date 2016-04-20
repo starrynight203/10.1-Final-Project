@@ -49,12 +49,11 @@ var HomePageComponent = React.createClass({
           <div className="col-xs-12">
             <h2>Classic</h2>
             <p>Classic is a handcrafted wire-wrapped ring line made to order and packaged with care. Established and based in New York City.</p>
-            <div className="line"></div>
             <a href="#bio" className="read-story">Read our Story</a>
           </div>
         </div>
 
-        <div className="container">
+        <div className="">
           <div id="myCarousel" className="carousel slide" data-ride="carousel">
 
             <ol className="carousel-indicators">

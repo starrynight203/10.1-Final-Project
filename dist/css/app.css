@@ -5888,20 +5888,14 @@ body {
     font-size: 18px;
     color: #fff;
     width: 625px;
-    margin-left: 25%; }
+    margin: auto;
+    text-align: center;
+    padding-bottom: 10px; }
   .short-story a {
+    padding-top: 5px;
     font-size: 16px;
     text-decoration: none;
     color: #000; }
-
-.line {
-  border-left: 1px solid #aaa;
-  height: 50px;
-  width: 1px;
-  margin-right: 387px;
-  margin-left: 636px;
-  margin-top: 15px;
-  margin-bottom: 15px; }
 
 .image-boxes {
   margin-top: 66px; }
@@ -5954,11 +5948,8 @@ body {
     border-left: 3px solid #fff;
     opacity: 0.9; }
 
-.container {
-  width: 1280px;
-  height: 400px;
-  padding-left: 0;
-  padding-right: 0; }
+.carousel-inner .item img {
+  height: 140%; }
 
 .slide {
   margin-top: 6px; }
@@ -6011,6 +6002,9 @@ footer {
   footer h3 {
     font-size: 22px;
     margin: 0; }
+
+.copyright {
+  text-align: center; }
 
 .background {
   background-color: #eee;
@@ -6146,7 +6140,8 @@ h5 {
   margin-left: 100px;
   border-radius: 5px; }
 
-.ring-name {
+.ring-details h3 {
+  margin-left: 0;
   font-size: 43px; }
 
 .price {
@@ -6325,5 +6320,14 @@ address {
   .return-page a {
     text-decoration: none;
     color: #fff; }
+
+.ship-titles {
+  text-align: center;
+  font-size: 25px; }
+
+.return-paragraph {
+  margin-bottom: 30px; }
+  .return-paragraph p {
+    text-align: center; }
 
 /*# sourceMappingURL=app.css.map */

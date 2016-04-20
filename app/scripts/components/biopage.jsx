@@ -9,7 +9,7 @@ var BioPageComponent = React.createClass({
       <div>
       <div className="bio-page">
         <div className="row">
-          <div className="col-xs-12">
+          <div className="col-md-12 col-md-4 col-sm-6">
             <ul className="bio-main-nav">
               <li><a href="#">Home</a></li>
               <li><a href="#">Our Story</a></li>
