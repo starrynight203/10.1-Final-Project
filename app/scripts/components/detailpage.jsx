@@ -13,7 +13,7 @@ var DetailPageComponent = React.createClass({
   mixins: [LinkedStateMixin],
 
   getInitialState: function(){
-    return {'product': new Product(), 'qty': 1, 'size': 0, 'currentImageUrl': ""};
+    return {'product': new Product(), 'qty': 1, 'size': 5, 'currentImageUrl': ""};
   },
   componentWillMount: function(){
     var self = this;
@@ -47,7 +47,7 @@ var DetailPageComponent = React.createClass({
    var self = this;
    cart.set({
      product: product,
-     qty: self.state.qty,
+     qty: Number(self.state.qty),
      size: Number(self.state.size),
      wire: self.state.wire,
      bead: self.state.bead

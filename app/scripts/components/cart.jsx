@@ -82,10 +82,13 @@ var CartComponent = React.createClass({
     var query = new Parse.Query('Cart');
     query.find({
       success: function(results) {
+
         self.setState({'cartorder': []});
         _.each(results,function(result){
+          console.log(result.product);
           result.destroy();
         })
+        Backbone.history.navigate('orderconfirmation', {trigger: true});
       },
       error: function(error) {
         alert("Error: " + error.code + " " + error.message);

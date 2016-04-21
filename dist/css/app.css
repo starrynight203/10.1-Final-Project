@@ -6358,4 +6358,14 @@ address {
 .order-table {
   margin-bottom: 120px; }
 
+.confirm-page {
+  margin-top: 130px;
+  margin-bottom: 130px; }
+  .confirm-page h4 {
+    text-align: center;
+    font-size: 25px; }
+  .confirm-page li {
+    text-align: center;
+    font-size: 17px; }
+
 /*# sourceMappingURL=app.css.map */
