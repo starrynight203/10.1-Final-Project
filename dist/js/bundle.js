@@ -304,18 +304,19 @@ var BioPageComponent = React.createClass({displayName: "BioPageComponent",
       React.createElement("div", null, 
       React.createElement("div", {className: "bio-page"}, 
         React.createElement("div", {className: "row"}, 
-          React.createElement("div", {className: "col-md-12 col-md-4 col-sm-6"}, 
+          React.createElement("div", {className: "col-md-6"}, 
             React.createElement("ul", {className: "bio-main-nav"}, 
               React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
               React.createElement("li", null, React.createElement("a", {href: "#"}, "Our Story")), 
               React.createElement("li", null, React.createElement("a", {href: "#gallery"}, "Shop"))
-            ), 
-
-            React.createElement("ul", {className: "cart-nav"}, 
-              React.createElement("li", null, React.createElement("a", {href: "#cart"}, "Cart"))
             )
+          ), 
+
+          React.createElement("div", {className: "col-md-6 cart-nav"}, 
+            React.createElement("span", null, React.createElement("a", {href: "#cart"}, "Cart"))
           )
         )
+
       ), 
 
       React.createElement("div", {className: "about-area"}, 
@@ -515,21 +516,24 @@ var ContactComponent = React.createClass({displayName: "ContactComponent",
   render: function(){
     return (
       React.createElement("div", null, 
-      React.createElement("div", {className: "contact-page"}, 
-        React.createElement("div", {className: "row"}, 
-          React.createElement("div", {className: "col-xs-12"}, 
-            React.createElement("ul", {className: "bio-main-nav"}, 
-              React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
-              React.createElement("li", null, React.createElement("a", {href: "#"}, "Our Story")), 
-              React.createElement("li", null, React.createElement("a", {href: "#gallery"}, "Shop"))
+        React.createElement("div", {className: "contact-page"}, 
+          React.createElement("div", {className: "row"}, 
+            React.createElement("div", {className: "col-md-6"}, 
+              React.createElement("ul", {className: "bio-main-nav"}, 
+                React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
+                React.createElement("li", null, React.createElement("a", {href: "#"}, "Our Story")), 
+                React.createElement("li", null, React.createElement("a", {href: "#gallery"}, "Shop"))
+              )
             ), 
 
-            React.createElement("ul", {className: "cart-nav"}, 
-              React.createElement("li", null, React.createElement("a", {href: "#cart"}, "Cart"))
+            React.createElement("div", {className: "col-md-6 cart-nav"}, 
+              React.createElement("span", null, React.createElement("a", {href: "#cart"}, "Cart"))
             )
           )
-        )
-      ), 
+
+        ), 
+
+
 
       React.createElement("div", {className: "row"}, 
         React.createElement("div", {className: "col-xs-12 col-md-4 col-md-offset-2 contact"}, 
@@ -825,21 +829,22 @@ var HeadingComponent = React.createClass({displayName: "HeadingComponent",
   render: function(){
     return(
       React.createElement("div", {className: "row heading-page"}, 
-        React.createElement("div", {className: "col-xs-12"}, 
+        React.createElement("div", {className: "col-md-6"}, 
           React.createElement("ul", {className: "heading-main-nav"}, 
             React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
             React.createElement("li", null, React.createElement("a", {href: "#bio"}, "Our Story")), 
             React.createElement("li", null, React.createElement("a", {href: "#gallery"}, "Shop"))
-          ), 
-
-          React.createElement("ul", {className: "heading-cart-nav"}, 
-            React.createElement("li", null, React.createElement("a", {href: "#cart"}, "Cart"))
           )
-        )
+        ), 
+
+          React.createElement("div", {className: "col-md-6 heading-cart-nav"}, 
+              React.createElement("span", null, React.createElement("a", {href: "#cart"}, "Cart"))
+          )
       )
     );
   }
 });
+
 
 module.exports = HeadingComponent;
 
@@ -1030,21 +1035,22 @@ var ReturnExchangeComponent = React.createClass({displayName: "ReturnExchangeCom
   render: function(){
     return (
       React.createElement("div", null, 
-      React.createElement("div", {className: "return-page"}, 
-        React.createElement("div", {className: "row"}, 
-          React.createElement("div", {className: "col-xs-12"}, 
-            React.createElement("ul", {className: "bio-main-nav"}, 
-              React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
-              React.createElement("li", null, React.createElement("a", {href: "#bio"}, "Our Story")), 
-              React.createElement("li", null, React.createElement("a", {href: "#gallery"}, "Shop"))
+        React.createElement("div", {className: "return-page"}, 
+          React.createElement("div", {className: "row"}, 
+            React.createElement("div", {className: "col-md-6"}, 
+              React.createElement("ul", {className: "bio-main-nav"}, 
+                React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
+                React.createElement("li", null, React.createElement("a", {href: "#"}, "Our Story")), 
+                React.createElement("li", null, React.createElement("a", {href: "#gallery"}, "Shop"))
+              )
             ), 
 
-            React.createElement("ul", {className: "cart-nav"}, 
-              React.createElement("li", null, React.createElement("a", {href: "#cart"}, "Cart"))
+            React.createElement("div", {className: "col-md-6 cart-nav"}, 
+              React.createElement("span", null, React.createElement("a", {href: "#cart"}, "Cart"))
             )
           )
-        )
-      ), 
+
+        ), 
 
       React.createElement("div", {className: "row return-paragraph"}, 
         React.createElement("div", {className: "col-xs-12"}, 
