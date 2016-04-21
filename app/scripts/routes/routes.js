@@ -16,6 +16,7 @@ var CartComponent = require('./../components/cart.jsx');
 var OrdersComponent = require('./../components/orders.jsx');
 var ContactComponent = require('./../components/contact.jsx');
 var ReturnExchangeComponent = require('./../components/returnsexchanges.jsx');
+var PaymentConfirmationComponent = require('./../components/orderconfirmation.jsx');
 
 var appContainer = document.getElementById('app');
 var Router = Backbone.Router.extend({
@@ -32,7 +33,8 @@ var Router = Backbone.Router.extend({
     'cart': 'cartscreen',
     'orders': 'orderscreen',
     'contact': 'contactscreen',
-    'return': 'returnexchangescreen'
+    'return': 'returnexchangescreen',
+    'orderconfirmation': 'orderconfirmationscreen'
   },
   index: function(){
     ReactDOM.unmountComponentAtNode(appContainer);
@@ -135,6 +137,14 @@ var Router = Backbone.Router.extend({
 
     ReactDOM.render(
       React.createElement(ReturnExchangeComponent),
+      appContainer
+    );
+  },
+  orderconfirmationscreen: function(){
+    ReactDOM.unmountComponentAtNode(appContainer);
+
+    ReactDOM.render(
+      React.createElement(PaymentConfirmationComponent),
       appContainer
     );
   }
