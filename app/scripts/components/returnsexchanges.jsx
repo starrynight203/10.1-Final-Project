@@ -23,9 +23,14 @@ var ReturnExchangeComponent = React.createClass({
         </div>
       </div>
 
-      <div className="row">
+      <div className="row return-paragraph">
         <div className="col-xs-12">
-          <h3>Returns and Exchanges</h3>
+          <h3 className="ship-titles">Shipping and Handling</h3>
+          <p>Shipping and handling is $3.50. This covers the cost of packaging and shipping with care.</p>
+        </div>
+        <div className="col-xs-12">
+          <h3 className="ship-titles">Returns and Exchanges</h3>
+          <p>Due to the custom design of each handmade ring, unforturnately there are no exchanges or refunds offered at this time.</p>
         </div>
       </div>
     </div>

@@ -92,8 +92,7 @@ var DetailPageComponent = React.createClass({
               </div>
 
           </div>
-          <div className="col-xs-6">
-            <div>
+          <div className="col-xs-6 ring-details">
               <h3 className="ring-name" key={product.id}>{product.get('name')}</h3>
               <span className="price">${product.get('price')}</span>
               <p className="ring-description">{product.get('description')}</p>
@@ -103,8 +102,6 @@ var DetailPageComponent = React.createClass({
               <input type="text" className="form-control size-input" valueLink={this.linkState('size')} placeholder=""/>
 
               <button type='button' onClick={self.addToCart.bind(self, product)} className='btn btn-default add-to-cart'>Add to Cart</button>
-
-            </div>
           </div>
 
         </div>

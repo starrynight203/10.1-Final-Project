@@ -65,7 +65,6 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
 
     product.save(null, {
       success: function(product) {
-        alert('New product created');
         Backbone.history.navigate('createproduct', {trigger: true});
       },
       error: function(error) {
@@ -305,7 +304,7 @@ var BioPageComponent = React.createClass({displayName: "BioPageComponent",
       React.createElement("div", null, 
       React.createElement("div", {className: "bio-page"}, 
         React.createElement("div", {className: "row"}, 
-          React.createElement("div", {className: "col-xs-12"}, 
+          React.createElement("div", {className: "col-md-12 col-md-4 col-sm-6"}, 
             React.createElement("ul", {className: "bio-main-nav"}, 
               React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
               React.createElement("li", null, React.createElement("a", {href: "#"}, "Our Story")), 
@@ -476,6 +475,17 @@ var CartComponent = React.createClass({displayName: "CartComponent",
               )
             ), 
             React.createElement("p", null, "Total Cart Price: $ ", runningTotal, " ")
+          ), 
+          React.createElement("form", {action: "", method: "POST"}, 
+            React.createElement("script", {
+              src: "https://checkout.stripe.com/checkout.js", className: "stripe-button", 
+              "data-key": "pk_test_6pRNASCoBOKtIshFeQd4XMUh", 
+              "data-amount": "999", 
+              "data-name": "Stripe.com", 
+              "data-description": "Widget", 
+              "data-image": "/img/documentation/checkout/marketplace.png", 
+              "data-locale": "auto"}
+            )
           )
         )
     );
@@ -703,8 +713,7 @@ var DetailPageComponent = React.createClass({displayName: "DetailPageComponent",
               )
 
           ), 
-          React.createElement("div", {className: "col-xs-6"}, 
-            React.createElement("div", null, 
+          React.createElement("div", {className: "col-xs-6 ring-details"}, 
               React.createElement("h3", {className: "ring-name", key: product.id}, product.get('name')), 
               React.createElement("span", {className: "price"}, "$", product.get('price')), 
               React.createElement("p", {className: "ring-description"}, product.get('description')), 
@@ -714,8 +723,6 @@ var DetailPageComponent = React.createClass({displayName: "DetailPageComponent",
               React.createElement("input", {type: "text", className: "form-control size-input", valueLink: this.linkState('size'), placeholder: ""}), 
 
               React.createElement("button", {type: "button", onClick: self.addToCart.bind(self, product), className: "btn btn-default add-to-cart"}, "Add to Cart")
-
-            )
           )
 
         )
@@ -831,39 +838,44 @@ var HomePageComponent = React.createClass({displayName: "HomePageComponent",
     return (
       React.createElement("div", null, 
       React.createElement("div", {className: "container-fluid"}, 
+
+            React.createElement("div", {className: "row"}, 
+              React.createElement("div", {className: "col-md-4 main-nav"}, 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
+                  React.createElement("li", null, React.createElement("a", {href: "#bio"}, "Our Story")), 
+                  React.createElement("li", null, React.createElement("a", {href: "#gallery"}, "Shop"))
+                )
+              ), 
+              React.createElement("div", {className: "col-md-4 title"}, 
+                React.createElement("h2", null, "Classic")
+              ), 
+              React.createElement("div", {className: "col-md-4 cart-nav"}, 
+                React.createElement("span", null, React.createElement("a", {href: "#cart"}, "Cart"))
+              )
+          ), 
+
+
+
         React.createElement("div", {className: "row"}, 
-          React.createElement("div", {className: "col-xs-12"}, 
-            React.createElement("ul", {className: "main-nav"}, 
-              React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
-              React.createElement("li", null, React.createElement("a", {href: "#bio"}, "Our Story")), 
-              React.createElement("li", null, React.createElement("a", {href: "#gallery"}, "Shop"))
-            ), 
-
-            React.createElement("h2", {className: "title"}, "Classic"), 
-
-            React.createElement("ul", {className: "cart-nav"}, 
-              React.createElement("li", null, React.createElement("a", {href: "#cart"}, "Cart"))
-            )
+          React.createElement("div", {className: "col-md-12 col-sm-6 s-button"}, 
+            React.createElement("a", {href: "#gallery", className: "shop-button"}, "Shop Now")
           )
         ), 
-
-        React.createElement("div", {className: "s-button"}, 
-          React.createElement("a", {href: "#gallery", className: "shop-button"}, "Shop Now")
-        ), 
         React.createElement("div", {className: "row image-boxes"}, 
-          React.createElement("div", {className: "col-xs-6 picbox1"}, 
+          React.createElement("div", {className: "col-xs-12 col-sm-12 col-md-6 col-lg-6 picbox1"}, 
             React.createElement("img", {src: "images/homepage2.jpg", alt: "ring1"})
           ), 
-          React.createElement("div", {className: "col-xs-6 picbox2"}, 
+          React.createElement("div", {className: "col-xs-12 col-sm-12 col-md-6 col-lg-6 picbox2"}, 
             React.createElement("img", {src: "images/homepage8.jpg", alt: "ring2"})
           )
         )
       ), 
         React.createElement("div", {className: "row image-boxes2"}, 
-          React.createElement("div", {className: "col-xs-6 picbox3"}, 
+          React.createElement("div", {className: "col-xs-12 col-sm-12 col-md-6 col-lg-6 picbox3"}, 
             React.createElement("img", {src: "images/homepage7.jpg", alt: "ring3"})
           ), 
-          React.createElement("div", {className: "col-xs-6 picbox4"}, 
+          React.createElement("div", {className: "col-xs-12 col-sm-12 col-md-6 col-lg-6 picbox4"}, 
             React.createElement("img", {src: "images/homepage.jpg", alt: "ring4", className: "thered"})
           )
         ), 
@@ -872,12 +884,11 @@ var HomePageComponent = React.createClass({displayName: "HomePageComponent",
           React.createElement("div", {className: "col-xs-12"}, 
             React.createElement("h2", null, "Classic"), 
             React.createElement("p", null, "Classic is a handcrafted wire-wrapped ring line made to order and packaged with care. Established and based in New York City."), 
-            React.createElement("div", {className: "line"}), 
             React.createElement("a", {href: "#bio", className: "read-story"}, "Read our Story")
           )
         ), 
 
-        React.createElement("div", {className: "container"}, 
+        React.createElement("div", {className: ""}, 
           React.createElement("div", {id: "myCarousel", className: "carousel slide", "data-ride": "carousel"}, 
 
             React.createElement("ol", {className: "carousel-indicators"}, 
@@ -898,11 +909,11 @@ var HomePageComponent = React.createClass({displayName: "HomePageComponent",
             ), 
 
             React.createElement("div", {className: "item slide3"}, 
-              React.createElement("img", {src: "images/maybeslider1.jpg", alt: "Flower", className: ""})
+              React.createElement("img", {src: "images/maybeslider1.jpg", alt: "Flower", className: "image-3"})
             ), 
 
             React.createElement("div", {className: "item slide4"}, 
-              React.createElement("img", {src: "images/jackie1.jpg", alt: "Flower", className: ""})
+              React.createElement("img", {src: "images/anotherslide.jpg", alt: "Flower", className: "image-4"})
             )
           ), 
 
@@ -1018,9 +1029,14 @@ var ReturnExchangeComponent = React.createClass({displayName: "ReturnExchangeCom
         )
       ), 
 
-      React.createElement("div", {className: "row"}, 
+      React.createElement("div", {className: "row return-paragraph"}, 
         React.createElement("div", {className: "col-xs-12"}, 
-          React.createElement("h3", null, "Returns and Exchanges")
+          React.createElement("h3", {className: "ship-titles"}, "Shipping and Handling"), 
+          React.createElement("p", null, "Shipping and handling is $3.50. This covers the cost of packaging and shipping with care.")
+        ), 
+        React.createElement("div", {className: "col-xs-12"}, 
+          React.createElement("h3", {className: "ship-titles"}, "Returns and Exchanges"), 
+          React.createElement("p", null, "Due to the custom design of each handmade ring, unforturnately there are no exchanges or refunds offered at this time.")
         )
       )
     )

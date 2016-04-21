@@ -63,7 +63,6 @@ var AddProductComponent = React.createClass({
 
     product.save(null, {
       success: function(product) {
-        alert('New product created');
         Backbone.history.navigate('createproduct', {trigger: true});
       },
       error: function(error) {
