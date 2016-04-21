@@ -20,12 +20,12 @@ var OrdersComponent = React.createClass({
               <td>Name</td>
               <td>Size</td>
               <td>Quantity</td>
-              <td>Wire</td>
-              <td>Bead</td>
             </tr>
           </thead>
           <tbody>
-
+            <td>ELLE</td>
+            <td>5</td>
+            <td>1</td>
           </tbody>
         </table>
       </div>

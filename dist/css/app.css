@@ -6102,6 +6102,20 @@ footer {
   .addproductpage .row {
     margin: 0; }
 
+.remove-product {
+  margin-left: 15px;
+  color: #000;
+  background-color: #fff;
+  border-color: #000; }
+
+.delete-image {
+  border: 1px solid #000;
+  border-radius: 5px;
+  width: 20px;
+  padding: 4px;
+  color: #000;
+  cursor: pointer; }
+
 .side-nav li {
   margin-top: 2px;
   margin-bottom: 5px; }
@@ -6328,5 +6342,8 @@ address {
   margin-bottom: 30px; }
   .return-paragraph p {
     text-align: center; }
+
+.order-table {
+  margin-bottom: 120px; }
 
 /*# sourceMappingURL=app.css.map */
