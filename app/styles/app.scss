@@ -510,6 +510,13 @@ h5 {
     margin-left: 0;
     font-size: 43px;
   }
+  .added-to-cart{
+    float: right;
+    margin-left: 20px;
+    width: 60%;
+    margin-top: 6px;
+    margin-bottom: 0px;
+  }
 }
 
 .price {
@@ -652,6 +659,9 @@ h5 {
 }
 
 /////// cart page ///////
+.cart-page {
+  margin-bottom: 100px;
+}
 
 .shopping-cart {
   margin-left: 35px;

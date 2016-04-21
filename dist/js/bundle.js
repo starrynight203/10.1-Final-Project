@@ -659,6 +659,8 @@ var DetailPageComponent = React.createClass({displayName: "DetailPageComponent",
     this.setState({'currentImageUrl': image.url()});
   },
   addToCart: function(product){
+    $('.added-to-cart').slideToggle(500);
+
    console.log("addToCart");
 
    // 1. Create a new cart object
@@ -681,7 +683,9 @@ var DetailPageComponent = React.createClass({displayName: "DetailPageComponent",
          console.log("error ", err);
        }
    });
-
+   setTimeout(function(){
+     $('.added-to-cart').slideToggle(500);
+   },1500);
    // 4. Update the cart icon to show number of items in the cart
 
  },
@@ -722,7 +726,11 @@ var DetailPageComponent = React.createClass({displayName: "DetailPageComponent",
               React.createElement("span", null, "Size:"), 
               React.createElement("input", {type: "text", className: "form-control size-input", valueLink: this.linkState('size'), placeholder: ""}), 
 
-              React.createElement("button", {type: "button", onClick: self.addToCart.bind(self, product), className: "btn btn-default add-to-cart"}, "Add to Cart")
+              React.createElement("button", {type: "button", onClick: self.addToCart.bind(self, product), className: "btn btn-default add-to-cart"}, "Add to Cart"), 
+
+              React.createElement("div", {className: "alert alert-success added-to-cart", style: {"display": "none"}, role: "alert"}, 
+                React.createElement("strong", null, "Added To Cart!")
+              )
           )
         )
       )
