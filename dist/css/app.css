@@ -6275,7 +6275,7 @@ h5 {
     margin: 5px; }
 
 .cart-page {
-  margin-bottom: 100px; }
+  margin-bottom: 200px; }
 
 .shopping-cart {
   margin-left: 35px;
@@ -6292,6 +6292,9 @@ h3 {
   color: #000;
   background-color: #fff;
   border-color: #000; }
+
+.stripe-checkout {
+  margin: 36px; }
 
 h3 {
   color: #000;

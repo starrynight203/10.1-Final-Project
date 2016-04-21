@@ -14,7 +14,7 @@ var OrdersComponent = React.createClass({
         <HeadingComponent/>
         <h3>Orders</h3>
         <a href="#createproduct" className="add-button">Product List</a>
-        <table className="table">
+        <table className="table order-table">
           <thead>
             <tr>
               <td>Name</td>
