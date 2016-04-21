@@ -78,7 +78,19 @@ var CartComponent = React.createClass({
     });
   },
   onToken: function(){
-
+    var self = this;
+    var query = new Parse.Query('Cart');
+    query.find({
+      success: function(results) {
+        self.setState({'cartorder': []});
+        _.each(results,function(result){
+          result.destroy();
+        })
+      },
+      error: function(error) {
+        alert("Error: " + error.code + " " + error.message);
+      }
+    });
   },
 
   render: function(){
@@ -133,10 +145,12 @@ var CartComponent = React.createClass({
             </table>
             <p>Total Cart Price: $ {runningTotal} </p>
           </div>
+          <div className="stripe-checkout">
             <StripeCheckout
           token={this.onToken}
           stripeKey="pk_test_oHu1RKMOJtHkdGUpUWbPiN4e" />
         </div>
+      </div>
     );
   }
 });
