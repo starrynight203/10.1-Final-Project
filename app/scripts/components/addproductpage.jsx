@@ -94,7 +94,7 @@ var AddProductComponent = React.createClass({
         <span>
           <img src={image.url()} className="thumbnail-images" />
           <div>{image.name()}</div>
-          <div onClick={self.deleteImage.bind(self, image)}>X</div>
+          <div className="delete-image" onClick={self.deleteImage.bind(self, image)}>X</div>
         </span>
       )
 
@@ -175,7 +175,7 @@ var AddProductComponent = React.createClass({
         </div>
 
         {pictureInputs}
-        <button onClick={this.handleRemove} className="btn btn-primary remove">Delete</button>
+        <button onClick={this.handleRemove} className="btn btn-primary remove-product">Delete Product</button>
         <button type="button" onClick={this.handleSubmit} type="submit" className="btn btn-default add-button">Submit</button>
       </div>
     </form>

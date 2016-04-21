@@ -96,7 +96,7 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
         React.createElement("span", null, 
           React.createElement("img", {src: image.url(), className: "thumbnail-images"}), 
           React.createElement("div", null, image.name()), 
-          React.createElement("div", {onClick: self.deleteImage.bind(self, image)}, "X")
+          React.createElement("div", {className: "delete-image", onClick: self.deleteImage.bind(self, image)}, "X")
         )
       )
 
@@ -177,7 +177,7 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
         ), 
 
         pictureInputs, 
-        React.createElement("button", {onClick: this.handleRemove, className: "btn btn-primary remove"}, "Delete"), 
+        React.createElement("button", {onClick: this.handleRemove, className: "btn btn-primary remove-product"}, "Delete Product"), 
         React.createElement("button", {type: "button", onClick: this.handleSubmit, type: "submit", className: "btn btn-default add-button"}, "Submit")
       )
     )
@@ -986,13 +986,13 @@ var OrdersComponent = React.createClass({displayName: "OrdersComponent",
             React.createElement("tr", null, 
               React.createElement("td", null, "Name"), 
               React.createElement("td", null, "Size"), 
-              React.createElement("td", null, "Quantity"), 
-              React.createElement("td", null, "Wire"), 
-              React.createElement("td", null, "Bead")
+              React.createElement("td", null, "Quantity")
             )
           ), 
-          React.createElement("tbody", null
-
+          React.createElement("tbody", null, 
+            React.createElement("td", null, "ELLE"), 
+            React.createElement("td", null, "5"), 
+            React.createElement("td", null, "1")
           )
         )
       )
