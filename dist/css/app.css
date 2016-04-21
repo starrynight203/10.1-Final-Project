@@ -5985,9 +5985,13 @@ body {
 
 .instagram-images {
   margin-bottom: 20px; }
+  .instagram-images img {
+    border: 1px solid #fff; }
 
 .instagram-images2 {
   margin-bottom: 20px; }
+  .instagram-images2 img {
+    border: 1px solid #fff; }
 
 footer {
   background-color: rgba(205, 169, 157, 0.3);

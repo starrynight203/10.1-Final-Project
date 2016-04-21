@@ -948,25 +948,25 @@ var HomePageComponent = React.createClass({displayName: "HomePageComponent",
         React.createElement("h2", {className: "insta-name"}, "Follow Us: ", React.createElement("a", {href: "#"}, "Classicdesign")), 
          React.createElement("div", {className: "instapics"}, 
            React.createElement("div", {className: "row instagram-images"}, 
-             React.createElement("div", {className: "col-xs-4"}, 
+             React.createElement("div", {className: "col-xs-12 col-sm-12 col-md-6 col-lg-4"}, 
                React.createElement("img", {src: "images/hompage5.jpg", alt: ""})
              ), 
-             React.createElement("div", {className: "col-xs-4"}, 
+             React.createElement("div", {className: "col-xs-12 col-sm-12 col-md-6 col-lg-4"}, 
                React.createElement("img", {src: "images/homepageslide3.jpg", alt: ""})
              ), 
-             React.createElement("div", {className: "col-xs-4"}, 
+             React.createElement("div", {className: "col-xs-12 col-sm-12 col-md-6 col-lg-4"}, 
                React.createElement("img", {src: "images/homepageslide.jpg", alt: ""})
              )
            ), 
 
            React.createElement("div", {className: "row instagram-images2"}, 
-             React.createElement("div", {className: "col-xs-4"}, 
+             React.createElement("div", {className: "col-xs-12 col-sm-12 col-md-6 col-lg-4"}, 
                React.createElement("img", {src: "images/idk.jpg", alt: ""})
              ), 
-             React.createElement("div", {className: "col-xs-4"}, 
+             React.createElement("div", {className: "col-xs-12 col-sm-12 col-md-6 col-lg-4"}, 
                React.createElement("img", {src: "images/contactheader.jpg", alt: ""})
              ), 
-             React.createElement("div", {className: "col-xs-4"}, 
+             React.createElement("div", {className: "col-xs-12 col-sm-12 col-md-6 col-lg-4"}, 
                React.createElement("img", {src: "images/emily4.jpg", alt: ""})
              )
            )
