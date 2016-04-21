@@ -7,6 +7,7 @@ var Cart = require('../models/models.js').Cart;
 var model = require('../models/models');
 var Parse = require('parse');
 var Backbone = require('backbone');
+var StripeCheckout = require('react-stripe-checkout');
 
 
 var CartComponent = React.createClass({
@@ -76,6 +77,9 @@ var CartComponent = React.createClass({
       }
     });
   },
+  onToken: function(){
+
+  },
 
   render: function(){
     var self = this;
@@ -129,17 +133,9 @@ var CartComponent = React.createClass({
             </table>
             <p>Total Cart Price: $ {runningTotal} </p>
           </div>
-          <form action="" method="POST">
-            <script
-              src="https://checkout.stripe.com/checkout.js" className="stripe-button"
-              data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-              data-amount="999"
-              data-name="Stripe.com"
-              data-description="Widget"
-              data-image="/img/documentation/checkout/marketplace.png"
-              data-locale="auto">
-            </script>
-          </form>
+            <StripeCheckout
+          token={this.onToken}
+          stripeKey="pk_test_oHu1RKMOJtHkdGUpUWbPiN4e" />
         </div>
     );
   }
