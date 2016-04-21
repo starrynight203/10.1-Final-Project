@@ -8,39 +8,44 @@ var HomePageComponent = React.createClass({
     return (
       <div>
       <div className="container-fluid">
-        <div className="row">
-          <div className="col-xs-12">
-            <ul className="main-nav">
-              <li><a href="#">Home</a></li>
-              <li><a href="#bio">Our Story</a></li>
-              <li><a href="#gallery">Shop</a></li>
-            </ul>
 
-            <h2 className="title">Classic</h2>
-
-            <ul className="cart-nav">
-              <li><a href="#cart">Cart</a></li>
-            </ul>
+            <div className="row">
+              <div className="col-md-4 main-nav">
+                <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#bio">Our Story</a></li>
+                  <li><a href="#gallery">Shop</a></li>
+                </ul>
+              </div>
+              <div className="col-md-4 title">
+                <h2>Classic</h2>
+              </div>
+              <div className="col-md-4 cart-nav">
+                <span><a href="#cart">Cart</a></span>
+              </div>
           </div>
-        </div>
 
-        <div className="s-button">
-          <a href="#gallery" className="shop-button">Shop Now</a>
+
+
+        <div className="row">
+          <div className="col-md-12 col-sm-6 s-button">
+            <a href="#gallery" className="shop-button">Shop Now</a>
+          </div>
         </div>
         <div className="row image-boxes">
-          <div className="col-xs-6 picbox1">
+          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 picbox1">
             <img  src="images/homepage2.jpg" alt="ring1" />
           </div>
-          <div className="col-xs-6 picbox2">
+          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 picbox2">
             <img src="images/homepage8.jpg" alt="ring2" />
           </div>
         </div>
       </div>
         <div className="row image-boxes2">
-          <div className="col-xs-6 picbox3">
+          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 picbox3">
             <img src="images/homepage7.jpg" alt="ring3" />
           </div>
-          <div className="col-xs-6 picbox4">
+          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 picbox4">
             <img src="images/homepage.jpg" alt="ring4" className="thered" />
           </div>
         </div>
@@ -74,11 +79,11 @@ var HomePageComponent = React.createClass({
             </div>
 
             <div className="item slide3">
-              <img src="images/maybeslider1.jpg" alt="Flower" className="" />
+              <img src="images/maybeslider1.jpg" alt="Flower" className="image-3" />
             </div>
 
             <div className="item slide4">
-              <img src="images/jackie1.jpg" alt="Flower" className="" />
+              <img src="images/anotherslide.jpg" alt="Flower" className="image-4" />
             </div>
           </div>
 

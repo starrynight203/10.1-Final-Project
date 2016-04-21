@@ -838,39 +838,44 @@ var HomePageComponent = React.createClass({displayName: "HomePageComponent",
     return (
       React.createElement("div", null, 
       React.createElement("div", {className: "container-fluid"}, 
+
+            React.createElement("div", {className: "row"}, 
+              React.createElement("div", {className: "col-md-4 main-nav"}, 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
+                  React.createElement("li", null, React.createElement("a", {href: "#bio"}, "Our Story")), 
+                  React.createElement("li", null, React.createElement("a", {href: "#gallery"}, "Shop"))
+                )
+              ), 
+              React.createElement("div", {className: "col-md-4 title"}, 
+                React.createElement("h2", null, "Classic")
+              ), 
+              React.createElement("div", {className: "col-md-4 cart-nav"}, 
+                React.createElement("span", null, React.createElement("a", {href: "#cart"}, "Cart"))
+              )
+          ), 
+
+
+
         React.createElement("div", {className: "row"}, 
-          React.createElement("div", {className: "col-xs-12"}, 
-            React.createElement("ul", {className: "main-nav"}, 
-              React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
-              React.createElement("li", null, React.createElement("a", {href: "#bio"}, "Our Story")), 
-              React.createElement("li", null, React.createElement("a", {href: "#gallery"}, "Shop"))
-            ), 
-
-            React.createElement("h2", {className: "title"}, "Classic"), 
-
-            React.createElement("ul", {className: "cart-nav"}, 
-              React.createElement("li", null, React.createElement("a", {href: "#cart"}, "Cart"))
-            )
+          React.createElement("div", {className: "col-md-12 col-sm-6 s-button"}, 
+            React.createElement("a", {href: "#gallery", className: "shop-button"}, "Shop Now")
           )
         ), 
-
-        React.createElement("div", {className: "s-button"}, 
-          React.createElement("a", {href: "#gallery", className: "shop-button"}, "Shop Now")
-        ), 
         React.createElement("div", {className: "row image-boxes"}, 
-          React.createElement("div", {className: "col-xs-6 picbox1"}, 
+          React.createElement("div", {className: "col-xs-12 col-sm-12 col-md-6 col-lg-6 picbox1"}, 
             React.createElement("img", {src: "images/homepage2.jpg", alt: "ring1"})
           ), 
-          React.createElement("div", {className: "col-xs-6 picbox2"}, 
+          React.createElement("div", {className: "col-xs-12 col-sm-12 col-md-6 col-lg-6 picbox2"}, 
             React.createElement("img", {src: "images/homepage8.jpg", alt: "ring2"})
           )
         )
       ), 
         React.createElement("div", {className: "row image-boxes2"}, 
-          React.createElement("div", {className: "col-xs-6 picbox3"}, 
+          React.createElement("div", {className: "col-xs-12 col-sm-12 col-md-6 col-lg-6 picbox3"}, 
             React.createElement("img", {src: "images/homepage7.jpg", alt: "ring3"})
           ), 
-          React.createElement("div", {className: "col-xs-6 picbox4"}, 
+          React.createElement("div", {className: "col-xs-12 col-sm-12 col-md-6 col-lg-6 picbox4"}, 
             React.createElement("img", {src: "images/homepage.jpg", alt: "ring4", className: "thered"})
           )
         ), 
@@ -904,11 +909,11 @@ var HomePageComponent = React.createClass({displayName: "HomePageComponent",
             ), 
 
             React.createElement("div", {className: "item slide3"}, 
-              React.createElement("img", {src: "images/maybeslider1.jpg", alt: "Flower", className: ""})
+              React.createElement("img", {src: "images/maybeslider1.jpg", alt: "Flower", className: "image-3"})
             ), 
 
             React.createElement("div", {className: "item slide4"}, 
-              React.createElement("img", {src: "images/jackie1.jpg", alt: "Flower", className: ""})
+              React.createElement("img", {src: "images/anotherslide.jpg", alt: "Flower", className: "image-4"})
             )
           ), 
 
