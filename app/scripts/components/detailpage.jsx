@@ -38,6 +38,8 @@ var DetailPageComponent = React.createClass({
     this.setState({'currentImageUrl': image.url()});
   },
   addToCart: function(product){
+    $('.added-to-cart').slideToggle(500);
+
    console.log("addToCart");
 
    // 1. Create a new cart object
@@ -60,7 +62,9 @@ var DetailPageComponent = React.createClass({
          console.log("error ", err);
        }
    });
-
+   setTimeout(function(){
+     $('.added-to-cart').slideToggle(500);
+   },1500);
    // 4. Update the cart icon to show number of items in the cart
 
  },
@@ -102,6 +106,10 @@ var DetailPageComponent = React.createClass({
               <input type="text" className="form-control size-input" valueLink={this.linkState('size')} placeholder=""/>
 
               <button type='button' onClick={self.addToCart.bind(self, product)} className='btn btn-default add-to-cart'>Add to Cart</button>
+
+              <div className="alert alert-success added-to-cart" style={{"display": "none"}} role="alert">
+                <strong>Added To Cart!</strong>
+              </div>
           </div>
         </div>
       </div>
