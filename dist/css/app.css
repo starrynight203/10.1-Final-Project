@@ -6002,9 +6002,8 @@ footer {
   footer h3 {
     font-size: 22px;
     margin: 0; }
-
-.copyright {
-  text-align: center; }
+  footer h4 {
+    text-align: center; }
 
 .background {
   background-color: #eee;
