@@ -9,18 +9,19 @@ var BioPageComponent = React.createClass({
       <div>
       <div className="bio-page">
         <div className="row">
-          <div className="col-md-12 col-md-4 col-sm-6">
+          <div className="col-md-6">
             <ul className="bio-main-nav">
               <li><a href="#">Home</a></li>
               <li><a href="#">Our Story</a></li>
               <li><a href="#gallery">Shop</a></li>
             </ul>
+          </div>
 
-            <ul className="cart-nav">
-              <li><a href="#cart">Cart</a></li>
-            </ul>
+          <div className="col-md-6 cart-nav">
+            <span><a href="#cart">Cart</a></span>
           </div>
         </div>
+
       </div>
 
       <div className="about-area">

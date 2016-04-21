@@ -101,25 +101,25 @@ var HomePageComponent = React.createClass({
         <h2 className="insta-name">Follow Us: <a href="#">Classicdesign</a></h2>
          <div className="instapics">
            <div className="row instagram-images">
-             <div className="col-xs-4">
+             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
                <img src="images/hompage5.jpg" alt="" />
              </div>
-             <div className="col-xs-4">
+             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
                <img src="images/homepageslide3.jpg" alt="" />
              </div>
-             <div className="col-xs-4">
+             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
                <img src="images/homepageslide.jpg" alt="" />
              </div>
            </div>
 
            <div className="row instagram-images2">
-             <div className="col-xs-4">
+             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
                <img src="images/idk.jpg" alt="" />
              </div>
-             <div className="col-xs-4">
+             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
                <img src="images/contactheader.jpg" alt="" />
              </div>
-             <div className="col-xs-4">
+             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
                <img src="images/emily4.jpg" alt="" />
              </div>
            </div>

@@ -5985,9 +5985,13 @@ body {
 
 .instagram-images {
   margin-bottom: 20px; }
+  .instagram-images img {
+    border: 1px solid #fff; }
 
 .instagram-images2 {
   margin-bottom: 20px; }
+  .instagram-images2 img {
+    border: 1px solid #fff; }
 
 footer {
   background-color: rgba(205, 169, 157, 0.3);
@@ -6212,7 +6216,7 @@ h5 {
 
 .bio-main-nav {
   display: inline-block;
-  margin: 35px; }
+  margin-top: 35px; }
   .bio-main-nav li {
     display: inline-block;
     margin: 5px; }
@@ -6265,14 +6269,10 @@ h5 {
       text-decoration: none;
       color: #000; }
 
-.heading-cart-nav {
+.heading-cart-nav span {
   float: right;
-  margin: 35px;
-  margin-right: 50px; }
-  .heading-cart-nav li {
-    list-style: none;
-    display: inline-block;
-    margin: 5px; }
+  padding-top: 35px;
+  padding-right: 50px; }
 
 .cart-page {
   margin-bottom: 200px; }
