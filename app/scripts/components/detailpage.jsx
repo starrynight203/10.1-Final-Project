@@ -83,7 +83,7 @@ var DetailPageComponent = React.createClass({
       <div className="detailpage">
         <HeadingComponent/>
         <div className="row detail-row">
-          <div className="col-xs-6">
+          <div className="col-md-5 col-md-offset-1">
             <img src={imageUrl} className="detail-img" alt=""/>
               <div className="row">
                 <div className="col-xs-6 detail-thumbnail">
@@ -92,7 +92,7 @@ var DetailPageComponent = React.createClass({
               </div>
 
           </div>
-          <div className="col-xs-6 ring-details">
+          <div className="col-md-4 col-xs-12 ring-details">
               <h3 className="ring-name" key={product.id}>{product.get('name')}</h3>
               <span className="price">${product.get('price')}</span>
               <p className="ring-description">{product.get('description')}</p>
@@ -103,7 +103,6 @@ var DetailPageComponent = React.createClass({
 
               <button type='button' onClick={self.addToCart.bind(self, product)} className='btn btn-default add-to-cart'>Add to Cart</button>
           </div>
-
         </div>
       </div>
     );

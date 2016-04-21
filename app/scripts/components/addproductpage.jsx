@@ -93,7 +93,7 @@ var AddProductComponent = React.createClass({
       var fileInput = (
         <span>
           <img src={image.url()} className="thumbnail-images" />
-          <div>{image.name()}</div>
+          <div className="image-name">{image.name()}</div>
           <div className="delete-image" onClick={self.deleteImage.bind(self, image)}>X</div>
         </span>
       )

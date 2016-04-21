@@ -95,7 +95,7 @@ var AddProductComponent = React.createClass({displayName: "AddProductComponent",
       var fileInput = (
         React.createElement("span", null, 
           React.createElement("img", {src: image.url(), className: "thumbnail-images"}), 
-          React.createElement("div", null, image.name()), 
+          React.createElement("div", {className: "image-name"}, image.name()), 
           React.createElement("div", {className: "delete-image", onClick: self.deleteImage.bind(self, image)}, "X")
         )
       )
@@ -704,7 +704,7 @@ var DetailPageComponent = React.createClass({displayName: "DetailPageComponent",
       React.createElement("div", {className: "detailpage"}, 
         React.createElement(HeadingComponent, null), 
         React.createElement("div", {className: "row detail-row"}, 
-          React.createElement("div", {className: "col-xs-6"}, 
+          React.createElement("div", {className: "col-md-5 col-md-offset-1"}, 
             React.createElement("img", {src: imageUrl, className: "detail-img", alt: ""}), 
               React.createElement("div", {className: "row"}, 
                 React.createElement("div", {className: "col-xs-6 detail-thumbnail"}, 
@@ -713,7 +713,7 @@ var DetailPageComponent = React.createClass({displayName: "DetailPageComponent",
               )
 
           ), 
-          React.createElement("div", {className: "col-xs-6 ring-details"}, 
+          React.createElement("div", {className: "col-md-4 col-xs-12 ring-details"}, 
               React.createElement("h3", {className: "ring-name", key: product.id}, product.get('name')), 
               React.createElement("span", {className: "price"}, "$", product.get('price')), 
               React.createElement("p", {className: "ring-description"}, product.get('description')), 
@@ -724,7 +724,6 @@ var DetailPageComponent = React.createClass({displayName: "DetailPageComponent",
 
               React.createElement("button", {type: "button", onClick: self.addToCart.bind(self, product), className: "btn btn-default add-to-cart"}, "Add to Cart")
           )
-
         )
       )
     );
